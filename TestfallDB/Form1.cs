@@ -17,5 +17,13 @@ namespace TestfallDB
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet1.DataTable1". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.dataTable1TableAdapter.Fill(this.dataSet1.DataTable1);
+
+        }
+
+        
     }
 }
