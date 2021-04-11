@@ -19,8 +19,10 @@ namespace TestfallDB
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-           
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "testfallDBDataSet.Bauteile". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.bauteileTableAdapter.Fill(this.testfallDBDataSet.Bauteile);
+
+
 
         }
 
