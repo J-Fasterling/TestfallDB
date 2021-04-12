@@ -33,10 +33,7 @@ namespace TestfallDB
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.testfallDBDataSet = new TestfallDB.TestfallDBDataSet();
             this.bauteileBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bauteileTableAdapter = new TestfallDB.TestfallDBDataSetTableAdapters.BauteileTableAdapter();
-            this.tableAdapterManager = new TestfallDB.TestfallDBDataSetTableAdapters.TableAdapterManager();
             this.dataTable1DataGridView = new System.Windows.Forms.DataGridView();
             this.dataTable1BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,7 +58,6 @@ namespace TestfallDB
             this.durchgeführtamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testfallDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).BeginInit();
@@ -83,24 +79,18 @@ namespace TestfallDB
             this.label1.Text = "TestfallDB";
             // 
             // testfallDBDataSet
-            // 
-            this.testfallDBDataSet.DataSetName = "TestfallDBDataSet";
-            this.testfallDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // bauteileBindingSource
             // 
-            this.bauteileBindingSource.DataMember = "Bauteile";
-            this.bauteileBindingSource.DataSource = this.testfallDBDataSet;
+          
             // 
             // bauteileTableAdapter
             // 
-            this.bauteileTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BauteileTableAdapter = this.bauteileTableAdapter;
-            this.tableAdapterManager.UpdateOrder = TestfallDB.TestfallDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+           
             // 
             // dataTable1DataGridView
             // 
@@ -281,7 +271,6 @@ namespace TestfallDB
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testfallDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).EndInit();
@@ -312,10 +301,7 @@ namespace TestfallDB
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Label label1;
-        private TestfallDBDataSet testfallDBDataSet;
         private System.Windows.Forms.BindingSource bauteileBindingSource;
-        private TestfallDBDataSetTableAdapters.BauteileTableAdapter bauteileTableAdapter;
-        private TestfallDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource dataTable1BindingSource1;
         private DataSet1TableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
