@@ -77,6 +77,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDatenbank_JonasDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TestDatenbank_MariusDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDatenbank_MariusDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +114,17 @@
     <None Include="TestDatenbank_JonasDataSet.xss">
       <DependentUpon>TestDatenbank_JonasDataSet.xsd</DependentUpon>
     </None>
+    <None Include="TestDatenbank_MariusDataSet.xsc">
+      <DependentUpon>TestDatenbank_MariusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TestDatenbank_MariusDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TestDatenbank_MariusDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TestDatenbank_MariusDataSet.xss">
+      <DependentUpon>TestDatenbank_MariusDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -132,6 +148,13 @@
     <Content Include="TestDatenbank_JonasF_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>TestDatenbank_JonasF.mdf</DependentUpon>
+    </Content>
+    <Content Include="TestDatenbank_Marius.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestDatenbank_Marius_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>TestDatenbank_Marius.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
