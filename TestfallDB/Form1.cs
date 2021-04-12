@@ -19,14 +19,6 @@ namespace TestfallDB
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet1.DataTable". Sie können sie bei Bedarf verschieben oder entfernen.
-           // this.dataTableTableAdapter.Fill(this.dataSet1.DataTable);
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet1.DataTable1". Sie können sie bei Bedarf verschieben oder entfernen.
-            //this.dataTable1TableAdapter.Fill(this.dataSet1.DataTable1);
-            // TODO: Diese Codezeile lädt Daten in die Tabelle "testfallDBDataSet.Bauteile". Sie können sie bei Bedarf verschieben oder entfernen.
-
-
-
 
         }
 
@@ -37,7 +29,7 @@ namespace TestfallDB
             try
             {
                 SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\jonas\\source\\repos\\TestfallDB\\TestfallDB\\TestDatenbank_JonasF.mdf;Integrated Security=True");
+                sqlTest.SqlConnect("Data Source=FASTLA0030\\TESTFALLSERVER;Initial Catalog=TestfallDatenbank;Integrated Security=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
