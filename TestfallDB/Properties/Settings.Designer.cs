@@ -69,10 +69,10 @@ namespace TestfallDB.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\TestDatenbank" +
-            "_Jeremias.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string TestDatenbank_JeremiasConnectionString {
+            "_Marius.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string TestDatenbank_MariusConnectionString {
             get {
-                return ((string)(this["TestDatenbank_JeremiasConnectionString"]));
+                return ((string)(this["TestDatenbank_MariusConnectionString"]));
             }
         }
     }
