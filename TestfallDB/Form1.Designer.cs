@@ -43,11 +43,7 @@ namespace TestfallDB
             this.Chef = new System.Windows.Forms.ToolStripMenuItem();
             this.Grubelix = new System.Windows.Forms.ToolStripMenuItem();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new TestfallDB.DataSet1();
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1TableAdapter = new TestfallDB.DataSet1TableAdapters.DataTable1TableAdapter();
-            this.tableAdapterManager1 = new TestfallDB.DataSet1TableAdapters.TableAdapterManager();
-            this.dataTableTableAdapter = new TestfallDB.DataSet1TableAdapters.DataTableTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).BeginInit();
@@ -56,7 +52,6 @@ namespace TestfallDB
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,32 +121,18 @@ namespace TestfallDB
             // 
             // dataSet1BindingSource
             // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
-            // 
+          
             // dataSet1
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // dataTable1BindingSource1
-            // 
-            this.dataTable1BindingSource1.DataMember = "DataTable1";
-            this.dataTable1BindingSource1.DataSource = this.dataSet1;
+            
             // 
             // dataTable1TableAdapter
             // 
-            this.dataTable1TableAdapter.ClearBeforeFill = true;
+           
             // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.UpdateOrder = TestfallDB.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // dataTableTableAdapter
-            // 
-            this.dataTableTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -171,8 +152,6 @@ namespace TestfallDB
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,27 +162,11 @@ namespace TestfallDB
 
         private System.Windows.Forms.BindingSource dataTable1BindingSource;
         private System.Windows.Forms.BindingSource dataTable2BindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.BindingSource bauteileBindingSource;
-        private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource dataTable1BindingSource1;
-        private DataSet1TableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
-        private DataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private System.Windows.Forms.BindingSource dataTable1BindingSource2;
         private System.Windows.Forms.BindingSource dataTableBindingSource;
-        private DataSet1TableAdapters.DataTableTableAdapter dataTableTableAdapter;
         private System.Windows.Forms.BindingSource dataTable1BindingSource3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem benutzerToolStripMenuItem;

@@ -30,19 +30,6 @@ namespace TestfallDB
 
         }
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.dataTableTableAdapter.FillBy(this.dataSet1.DataTable);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
         #region Benutzerauswahl
 
         private void Chef_Click(object sender, EventArgs e)
