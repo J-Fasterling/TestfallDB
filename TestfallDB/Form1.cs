@@ -19,13 +19,28 @@ namespace TestfallDB
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet1.DataTable". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.dataTableTableAdapter.Fill(this.dataSet1.DataTable);
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet1.DataTable1". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.dataTable1TableAdapter.Fill(this.dataSet1.DataTable1);
             // TODO: Diese Codezeile lädt Daten in die Tabelle "testfallDBDataSet.Bauteile". Sie können sie bei Bedarf verschieben oder entfernen.
-            this.bauteileTableAdapter.Fill(this.testfallDBDataSet.Bauteile);
+
 
 
 
         }
 
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.dataTableTableAdapter.FillBy(this.dataSet1.DataTable);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
 
+        }
     }
 }

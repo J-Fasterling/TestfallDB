@@ -37,22 +37,48 @@ namespace TestfallDB
             this.bauteileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bauteileTableAdapter = new TestfallDB.TestfallDBDataSetTableAdapters.BauteileTableAdapter();
             this.tableAdapterManager = new TestfallDB.TestfallDBDataSetTableAdapters.TableAdapterManager();
-            this.bauteileDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataTable1DataGridView = new System.Windows.Forms.DataGridView();
+            this.dataTable1BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTable1BindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new TestfallDB.DataSet1();
+            this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTable1TableAdapter = new TestfallDB.DataSet1TableAdapters.DataTable1TableAdapter();
+            this.tableAdapterManager1 = new TestfallDB.DataSet1TableAdapters.TableAdapterManager();
+            this.dataTableTableAdapter = new TestfallDB.DataSet1TableAdapters.DataTableTableAdapter();
+            this.testfallnummerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testfallnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bauteilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.erwartetesResultatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iOnODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.standDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rueckwaertsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ueberland50KmhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ueberland100kmhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stadtverkehrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.durchgeführtamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testfallDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bauteileDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(332, 24);
+            this.label1.Location = new System.Drawing.Point(498, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "TestfallDB";
             // 
@@ -76,39 +102,180 @@ namespace TestfallDB
             this.tableAdapterManager.BauteileTableAdapter = this.bauteileTableAdapter;
             this.tableAdapterManager.UpdateOrder = TestfallDB.TestfallDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // bauteileDataGridView
+            // dataTable1DataGridView
             // 
-            this.bauteileDataGridView.AutoGenerateColumns = false;
-            this.bauteileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.bauteileDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14});
-            this.bauteileDataGridView.DataSource = this.bauteileBindingSource;
-            this.bauteileDataGridView.Location = new System.Drawing.Point(301, 166);
-            this.bauteileDataGridView.Name = "bauteileDataGridView";
-            this.bauteileDataGridView.Size = new System.Drawing.Size(300, 220);
-            this.bauteileDataGridView.TabIndex = 1;
+            this.dataTable1DataGridView.AutoGenerateColumns = false;
+            this.dataTable1DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTable1DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.testfallnummerDataGridViewTextBoxColumn,
+            this.testfallnameDataGridViewTextBoxColumn,
+            this.bauteilDataGridViewTextBoxColumn,
+            this.erwartetesResultatDataGridViewTextBoxColumn,
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn,
+            this.iOnODataGridViewTextBoxColumn,
+            this.standDataGridViewTextBoxColumn,
+            this.rueckwaertsDataGridViewTextBoxColumn,
+            this.ueberland50KmhDataGridViewTextBoxColumn,
+            this.ueberland100kmhDataGridViewTextBoxColumn,
+            this.stadtverkehrDataGridViewTextBoxColumn,
+            this.durchgeführtamDataGridViewTextBoxColumn});
+            this.dataTable1DataGridView.DataSource = this.dataTable1BindingSource2;
+            this.dataTable1DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataTable1DataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataTable1DataGridView.Name = "dataTable1DataGridView";
+            this.dataTable1DataGridView.RowHeadersWidth = 62;
+            this.dataTable1DataGridView.RowTemplate.Height = 28;
+            this.dataTable1DataGridView.Size = new System.Drawing.Size(1200, 692);
+            this.dataTable1DataGridView.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn13
+            // dataTable1BindingSource2
             // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "nr";
-            this.dataGridViewTextBoxColumn13.HeaderText = "nr";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataTable1BindingSource2.DataMember = "DataTable1";
+            this.dataTable1BindingSource2.DataSource = this.dataSet1BindingSource;
             // 
-            // dataGridViewTextBoxColumn14
+            // dataTableBindingSource
             // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "bauteil";
-            this.dataGridViewTextBoxColumn14.HeaderText = "bauteil";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataTableBindingSource.DataMember = "DataTable";
+            this.dataTableBindingSource.DataSource = this.dataSet1BindingSource;
+            // 
+            // dataTable1BindingSource3
+            // 
+            this.dataTable1BindingSource3.DataMember = "DataTable1";
+            this.dataTable1BindingSource3.DataSource = this.dataSet1BindingSource;
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataTable1BindingSource1
+            // 
+            this.dataTable1BindingSource1.DataMember = "DataTable1";
+            this.dataTable1BindingSource1.DataSource = this.dataSet1;
+            // 
+            // dataTable1TableAdapter
+            // 
+            this.dataTable1TableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.UpdateOrder = TestfallDB.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // dataTableTableAdapter
+            // 
+            this.dataTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // testfallnummerDataGridViewTextBoxColumn
+            // 
+            this.testfallnummerDataGridViewTextBoxColumn.DataPropertyName = "Testfallnummer";
+            this.testfallnummerDataGridViewTextBoxColumn.HeaderText = "Testfallnummer";
+            this.testfallnummerDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.testfallnummerDataGridViewTextBoxColumn.Name = "testfallnummerDataGridViewTextBoxColumn";
+            this.testfallnummerDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // testfallnameDataGridViewTextBoxColumn
+            // 
+            this.testfallnameDataGridViewTextBoxColumn.DataPropertyName = "Testfallname";
+            this.testfallnameDataGridViewTextBoxColumn.HeaderText = "Testfallname";
+            this.testfallnameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.testfallnameDataGridViewTextBoxColumn.Name = "testfallnameDataGridViewTextBoxColumn";
+            this.testfallnameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // bauteilDataGridViewTextBoxColumn
+            // 
+            this.bauteilDataGridViewTextBoxColumn.DataPropertyName = "Bauteil";
+            this.bauteilDataGridViewTextBoxColumn.HeaderText = "Bauteil";
+            this.bauteilDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.bauteilDataGridViewTextBoxColumn.Name = "bauteilDataGridViewTextBoxColumn";
+            this.bauteilDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // erwartetesResultatDataGridViewTextBoxColumn
+            // 
+            this.erwartetesResultatDataGridViewTextBoxColumn.DataPropertyName = "erwartetesResultat";
+            this.erwartetesResultatDataGridViewTextBoxColumn.HeaderText = "erwartetesResultat";
+            this.erwartetesResultatDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.erwartetesResultatDataGridViewTextBoxColumn.Name = "erwartetesResultatDataGridViewTextBoxColumn";
+            this.erwartetesResultatDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // tatsaechlichesResultatDataGridViewTextBoxColumn
+            // 
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn.DataPropertyName = "tatsaechlichesResultat";
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn.HeaderText = "tatsaechlichesResultat";
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn.Name = "tatsaechlichesResultatDataGridViewTextBoxColumn";
+            this.tatsaechlichesResultatDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // iOnODataGridViewTextBoxColumn
+            // 
+            this.iOnODataGridViewTextBoxColumn.DataPropertyName = "iO/nO";
+            this.iOnODataGridViewTextBoxColumn.HeaderText = "iO/nO";
+            this.iOnODataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.iOnODataGridViewTextBoxColumn.Name = "iOnODataGridViewTextBoxColumn";
+            this.iOnODataGridViewTextBoxColumn.Width = 150;
+            // 
+            // standDataGridViewTextBoxColumn
+            // 
+            this.standDataGridViewTextBoxColumn.DataPropertyName = "Stand";
+            this.standDataGridViewTextBoxColumn.HeaderText = "Stand";
+            this.standDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.standDataGridViewTextBoxColumn.Name = "standDataGridViewTextBoxColumn";
+            this.standDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // rueckwaertsDataGridViewTextBoxColumn
+            // 
+            this.rueckwaertsDataGridViewTextBoxColumn.DataPropertyName = "rueckwaerts";
+            this.rueckwaertsDataGridViewTextBoxColumn.HeaderText = "rueckwaerts";
+            this.rueckwaertsDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.rueckwaertsDataGridViewTextBoxColumn.Name = "rueckwaertsDataGridViewTextBoxColumn";
+            this.rueckwaertsDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // ueberland50KmhDataGridViewTextBoxColumn
+            // 
+            this.ueberland50KmhDataGridViewTextBoxColumn.DataPropertyName = "Ueberland50 km/h";
+            this.ueberland50KmhDataGridViewTextBoxColumn.HeaderText = "Ueberland50 km/h";
+            this.ueberland50KmhDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.ueberland50KmhDataGridViewTextBoxColumn.Name = "ueberland50KmhDataGridViewTextBoxColumn";
+            this.ueberland50KmhDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // ueberland100kmhDataGridViewTextBoxColumn
+            // 
+            this.ueberland100kmhDataGridViewTextBoxColumn.DataPropertyName = "Ueberland100km/h";
+            this.ueberland100kmhDataGridViewTextBoxColumn.HeaderText = "Ueberland100km/h";
+            this.ueberland100kmhDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.ueberland100kmhDataGridViewTextBoxColumn.Name = "ueberland100kmhDataGridViewTextBoxColumn";
+            this.ueberland100kmhDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // stadtverkehrDataGridViewTextBoxColumn
+            // 
+            this.stadtverkehrDataGridViewTextBoxColumn.DataPropertyName = "Stadtverkehr";
+            this.stadtverkehrDataGridViewTextBoxColumn.HeaderText = "Stadtverkehr";
+            this.stadtverkehrDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.stadtverkehrDataGridViewTextBoxColumn.Name = "stadtverkehrDataGridViewTextBoxColumn";
+            this.stadtverkehrDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // durchgeführtamDataGridViewTextBoxColumn
+            // 
+            this.durchgeführtamDataGridViewTextBoxColumn.DataPropertyName = "durchgeführtam";
+            this.durchgeführtamDataGridViewTextBoxColumn.HeaderText = "durchgeführtam";
+            this.durchgeführtamDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.durchgeführtamDataGridViewTextBoxColumn.Name = "durchgeführtamDataGridViewTextBoxColumn";
+            this.durchgeführtamDataGridViewTextBoxColumn.Width = 150;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.bauteileDataGridView);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.dataTable1DataGridView);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -116,7 +283,13 @@ namespace TestfallDB
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testfallDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bauteileDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,9 +316,28 @@ namespace TestfallDB
         private System.Windows.Forms.BindingSource bauteileBindingSource;
         private TestfallDBDataSetTableAdapters.BauteileTableAdapter bauteileTableAdapter;
         private TestfallDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView bauteileDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource1;
+        private DataSet1TableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        private DataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.DataGridView dataTable1DataGridView;
+        private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource2;
+        private System.Windows.Forms.BindingSource dataTableBindingSource;
+        private DataSet1TableAdapters.DataTableTableAdapter dataTableTableAdapter;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testfallnummerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testfallnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bauteilDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn erwartetesResultatDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tatsaechlichesResultatDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iOnODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn standDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rueckwaertsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ueberland50KmhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ueberland100kmhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stadtverkehrDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn durchgeführtamDataGridViewTextBoxColumn;
     }
 }
 
