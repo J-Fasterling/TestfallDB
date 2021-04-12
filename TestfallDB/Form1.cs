@@ -51,7 +51,7 @@ namespace TestfallDB
             try
             {
                 SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("");
+                sqlTest.SqlConnect("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Jeremias\\Source\\Repos\\TestfallDB\\TestfallDB\\TestDatenbank_Jeremias.mdf;Integrated Security=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace TestfallDB
             try
             {
                 SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("");
+                sqlTest.SqlConnect("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\mariu\\Source\\Repos\\TestfallDB\\TestfallDB\\TestDatenbank_Marius.mdf;Integrated Security=True;Connect Timeout=30");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
