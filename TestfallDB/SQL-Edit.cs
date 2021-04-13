@@ -39,36 +39,36 @@ namespace TestfallDB
         }
 
 
-        public void SqlToComponent(Components component)
+        public List<Components> SqlToComponent()
         {
-            using (command = new SqlCommand("SELECT Bauteil FROM Bauteile", connection))
+            command = new SqlCommand("SELECT Bauteil FROM Bauteile", connection);
+            reader = command.ExecuteReader();
+
+            Components component = new Components();
+                
+            while (reader.Read())
             {
-                using (reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        component = new Components(reader.GetString(0));
-                        component.ComponentList.Add(component);
-                    }
-                }
+                component = new Components(reader.GetString(0));
+                component.ComponentList.Add(component);
             }
+            return component.ComponentList;   
         }
 
 
 
-        public void SqlToTestcase(Testcase test)
+        public List<Testcase> SqlToTestcase()
         {
-            using (command = new SqlCommand("SELECT * FROM Testfaelle", connection))
+            command = new SqlCommand("SELECT * FROM Testfaelle", connection);
+            reader = command.ExecuteReader();
+
+            Testcase test = new Testcase();
+             
+            while (reader.Read())
             {
-                using (reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        test = new Testcase(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
-                        test.TestcaseList.Add(test);
-                    }
-                }
+                  test = new Testcase(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
+                  test.TestcaseList.Add(test);
             }
+            return test.TestcaseList;
         }
     }
 }
