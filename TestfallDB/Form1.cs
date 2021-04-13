@@ -58,7 +58,7 @@ namespace TestfallDB
             {
                 SQL_Edit sqlTest = new SQL_Edit();
                 sqlTest.SqlConnect("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
-                sqlTest.SqlAdd("Bauteil", "Name", "Marius ist doof!");
+                sqlTest.SqlAdd("dbo.Bauteil", "Name", "Marius ist doof!");
 
                 MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
