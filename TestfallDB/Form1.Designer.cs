@@ -34,6 +34,7 @@ namespace TestfallDB
             this.dataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bauteileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -42,16 +43,15 @@ namespace TestfallDB
             this.Jerry = new System.Windows.Forms.ToolStripMenuItem();
             this.Chef = new System.Windows.Forms.ToolStripMenuItem();
             this.Grubelix = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,44 +95,29 @@ namespace TestfallDB
             this.Chef,
             this.Grubelix});
             this.benutzerWechselnToolStripMenuItem.Name = "benutzerWechselnToolStripMenuItem";
-            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.benutzerWechselnToolStripMenuItem.Text = "Benutzer wechseln";
             // 
             // Jerry
             // 
             this.Jerry.Name = "Jerry";
-            this.Jerry.Size = new System.Drawing.Size(180, 22);
+            this.Jerry.Size = new System.Drawing.Size(118, 22);
             this.Jerry.Text = "Jerry";
             this.Jerry.Click += new System.EventHandler(this.Jerry_Click);
             // 
             // Chef
             // 
             this.Chef.Name = "Chef";
-            this.Chef.Size = new System.Drawing.Size(180, 22);
+            this.Chef.Size = new System.Drawing.Size(118, 22);
             this.Chef.Text = "Chef";
             this.Chef.Click += new System.EventHandler(this.Chef_Click);
             // 
             // Grubelix
             // 
             this.Grubelix.Name = "Grubelix";
-            this.Grubelix.Size = new System.Drawing.Size(180, 22);
+            this.Grubelix.Size = new System.Drawing.Size(118, 22);
             this.Grubelix.Text = "Grubelix";
             this.Grubelix.Click += new System.EventHandler(this.Grubelix_Click);
-            // 
-            // dataSet1BindingSource
-            // 
-          
-            // dataSet1
-            // 
-           
-            // 
-            // dataTable1BindingSource1
-            
-            // 
-            // dataTable1TableAdapter
-            // 
-           
-            // 
             // 
             // Form1
             // 
@@ -148,6 +133,7 @@ namespace TestfallDB
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).EndInit();
             this.menuStrip1.ResumeLayout(false);

@@ -44,7 +44,7 @@ namespace TestfallDB
             {
                 SQL_Edit sqlTest = new SQL_Edit();
                 sqlTest.SqlConnect("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Jeremias\\Source\\Repos\\TestfallDB\\TestfallDB\\TestDatenbank_Jeremias.mdf;Integrated Security=True");
-                MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
+                MessageBox.Show("Verbindung mit Datenbank von " + Jerry.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
@@ -58,7 +58,9 @@ namespace TestfallDB
             {
                 SQL_Edit sqlTest = new SQL_Edit();
                 sqlTest.SqlConnect("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
-                MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
+                sqlTest.SqlAdd("Bauteil", "Name", "Marius ist doof!");
+
+                MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
@@ -66,5 +68,9 @@ namespace TestfallDB
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
