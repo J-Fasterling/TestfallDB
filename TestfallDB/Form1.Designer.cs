@@ -133,7 +133,6 @@ namespace TestfallDB
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
