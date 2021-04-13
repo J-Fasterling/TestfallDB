@@ -57,7 +57,7 @@ namespace TestfallDB
             try
             {
                 SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\mariu\\Source\\Repos\\TestfallDB\\TestfallDB\\TestDatenbank_Marius.mdf;Integrated Security=True;Connect Timeout=30");
+                sqlTest.SqlConnect("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)

@@ -75,5 +75,16 @@ namespace TestfallDB.Properties {
                 return ((string)(this["TestDatenbank_MariusConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated S" +
+            "ecurity=True")]
+        public string TestfallDBConnectionString1 {
+            get {
+                return ((string)(this["TestfallDBConnectionString1"]));
+            }
+        }
     }
 }
