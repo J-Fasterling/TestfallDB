@@ -4,69 +4,82 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TestfallDB
 {
     class SQL_Edit
     {
+        public SqlConnection Connection { get; set; }
+        public SqlCommand Command { get; set; }
+        public SqlDataReader Reader { get; set; }
+
         public SQL_Edit() { }
+
 
         public SQL_Edit(string sqlString)
         {
-            this.connection = new SqlConnection(sqlString);
+            this.Connection = new SqlConnection(sqlString);
+            Connection.Open();
         }
-        
-
-        public SqlConnection connection { get; set; }
-        public SqlCommand command { get; set; }
-        public SqlDataReader reader { get; set; }
-
 
         public void SqlConnect(string sqlString)
         {
-            connection = new SqlConnection(sqlString);
-
-            connection.Open();
+            Connection = new SqlConnection(sqlString);
+            Connection.Open();
         }
 
 
         public void SqlAdd(string tableName, string column, string toAdd)
         {
-            command.Connection = connection;
-            command.CommandText = "insert into " + tableName + " values (@" + column + ")";
-            command.Parameters.AddWithValue(column, toAdd);
-            command.ExecuteNonQuery();
+            Command = new SqlCommand("insert into " + tableName + " values (@" + column + ")", Connection);
+            Command.Parameters.AddWithValue("@" + column, toAdd);
+            Command.BeginExecuteNonQuery();
         }
 
 
-        public List<Components> SqlToComponent()
+        public List<Components> SqlToComponent(string table)
         {
-            command = new SqlCommand("SELECT Bauteil FROM Bauteile", connection);
-            reader = command.ExecuteReader();
+            Command = new SqlCommand("SELECT Bauteil FROM " + table, Connection);
+            Reader = Command.ExecuteReader();
 
             Components component = new Components();
-                
-            while (reader.Read())
+
+            try
             {
-                component = new Components(reader.GetString(0));
-                component.ComponentList.Add(component);
+                while (Reader.Read())
+                {
+                    component = new Components(Reader.GetString(0));
+                    component.ComponentList.Add(component);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return component.ComponentList;   
         }
 
 
 
-        public List<Testcase> SqlToTestcase()
+        public List<Testcase> SqlToTestcase(string table)
         {
-            command = new SqlCommand("SELECT * FROM Testfaelle", connection);
-            reader = command.ExecuteReader();
+            Command = new SqlCommand("SELECT * FROM " + table, Connection);
+            Reader = Command.ExecuteReader();
 
             Testcase test = new Testcase();
-             
-            while (reader.Read())
+
+            try
             {
-                  test = new Testcase(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
-                  test.TestcaseList.Add(test);
+                while (Reader.Read())
+                {
+                    test = new Testcase(Reader.GetString(0), Reader.GetString(1), Reader.GetInt32(2), Reader.GetString(3));
+                    test.TestcaseList.Add(test);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return test.TestcaseList;
         }

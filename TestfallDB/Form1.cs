@@ -28,10 +28,9 @@ namespace TestfallDB
         {
             try
             {
-                SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("Data Source=FASTLA0030\\TESTFALLSERVER;Initial Catalog=TestfallDatenbank;Integrated Security=True");
+                SQL_Edit sqlTest = new SQL_Edit("Data Source = FASTLA0030\\TESTFALLSERVER; Initial Catalog = TestfallDatenbank; Integrated Security = True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
-                sqlTest.SqlAdd("Bauteile", "Bauteil", "Test");
+                sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist doof!");
             }
             catch (Exception ex)
             {
@@ -43,8 +42,7 @@ namespace TestfallDB
         {
             try
             {
-                SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True");
+                SQL_Edit sqlTest = new SQL_Edit("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Jerry.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
             catch (Exception ex)
@@ -57,8 +55,7 @@ namespace TestfallDB
         {
             try
             {
-                SQL_Edit sqlTest = new SQL_Edit();
-                sqlTest.SqlConnect("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
+                SQL_Edit sqlTest = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
                 sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
             }
