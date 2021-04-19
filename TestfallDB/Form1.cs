@@ -66,7 +66,7 @@ namespace TestfallDB
             {
                 Components dataComponents = new Components();
 
-                SQL_Edit sqlTest = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True");
+                SQL_Edit sqlTest = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
                 sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlToComponent("Bauteile", dataComponents);
