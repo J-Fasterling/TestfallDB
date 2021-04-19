@@ -44,6 +44,9 @@ namespace TestfallDB
             this.Chef = new System.Windows.Forms.ToolStripMenuItem();
             this.Grubelix = new System.Windows.Forms.ToolStripMenuItem();
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bauteileBindingSource)).BeginInit();
@@ -77,7 +80,8 @@ namespace TestfallDB
             this.benutzerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,7 +90,7 @@ namespace TestfallDB
             this.benutzerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.benutzerWechselnToolStripMenuItem});
             this.benutzerToolStripMenuItem.Name = "benutzerToolStripMenuItem";
-            this.benutzerToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.benutzerToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.benutzerToolStripMenuItem.Text = "Benutzer";
             this.benutzerToolStripMenuItem.Click += new System.EventHandler(this.benutzerToolStripMenuItem_Click);
             // 
@@ -97,38 +101,62 @@ namespace TestfallDB
             this.Chef,
             this.Grubelix});
             this.benutzerWechselnToolStripMenuItem.Name = "benutzerWechselnToolStripMenuItem";
-            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.benutzerWechselnToolStripMenuItem.Text = "Benutzer wechseln";
             // 
             // Jerry
             // 
             this.Jerry.Name = "Jerry";
-            this.Jerry.Size = new System.Drawing.Size(147, 26);
+            this.Jerry.Size = new System.Drawing.Size(118, 22);
             this.Jerry.Text = "Jerry";
             this.Jerry.Click += new System.EventHandler(this.Jerry_Click);
             // 
             // Chef
             // 
             this.Chef.Name = "Chef";
-            this.Chef.Size = new System.Drawing.Size(147, 26);
+            this.Chef.Size = new System.Drawing.Size(118, 22);
             this.Chef.Text = "Chef";
             this.Chef.Click += new System.EventHandler(this.Chef_Click);
             // 
             // Grubelix
             // 
             this.Grubelix.Name = "Grubelix";
-            this.Grubelix.Size = new System.Drawing.Size(147, 26);
+            this.Grubelix.Size = new System.Drawing.Size(118, 22);
             this.Grubelix.Text = "Grubelix";
             this.Grubelix.Click += new System.EventHandler(this.Grubelix_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(0, 24);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(800, 426);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Bauteil";
+            this.columnHeader2.Width = 424;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Nr.";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -162,6 +190,9 @@ namespace TestfallDB
         private System.Windows.Forms.ToolStripMenuItem Jerry;
         private System.Windows.Forms.ToolStripMenuItem Chef;
         private System.Windows.Forms.ToolStripMenuItem Grubelix;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace TestfallDB
 {
@@ -38,10 +39,11 @@ namespace TestfallDB
         }
 
 
-        public List<Components> SqlToComponent(string table)
+        public void SqlToComponent(string table,Components cComponents)
         {
             Command = new SqlCommand("SELECT Bauteil FROM " + table, Connection);
             Reader = Command.ExecuteReader();
+            int num = 1;
 
             Components component = new Components();
 
@@ -49,15 +51,16 @@ namespace TestfallDB
             {
                 while (Reader.Read())
                 {
-                    component = new Components(Reader.GetString(0));
-                    component.ComponentList.Add(component);
+                    component = new Components(Reader.GetString(0), num);
+                    num++;
+                    cComponents.ComponentList.Add(component);
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            return component.ComponentList;   
+            //return component.ComponentList;   
         }
 
 
@@ -83,5 +86,6 @@ namespace TestfallDB
             }
             return test.TestcaseList;
         }
+
     }
 }
