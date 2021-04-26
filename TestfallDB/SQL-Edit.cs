@@ -65,10 +65,11 @@ namespace TestfallDB
 
 
 
-        public List<Testcase> SqlToTestcase(string table)
+        public void SqlToTestcase(string table,Components cComponents)
         {
             Command = new SqlCommand("SELECT * FROM " + table, Connection);
             Reader = Command.ExecuteReader();
+            int num = 1;
 
             Testcase test = new Testcase();
 
@@ -76,7 +77,8 @@ namespace TestfallDB
             {
                 while (Reader.Read())
                 {
-                    test = new Testcase(Reader.GetString(0), Reader.GetString(1), Reader.GetInt32(2), Reader.GetString(3));
+                    test = new Testcase(Reader.GetString(0), Reader.GetString(1), Reader.GetInt32(2), Reader.GetString(3), num);
+                    num++;
                     test.TestcaseList.Add(test);
                 }
             }
@@ -84,7 +86,7 @@ namespace TestfallDB
             {
                 MessageBox.Show(ex.Message);
             }
-            return test.TestcaseList;
+            //return test.TestcaseList;
         }
 
     }

@@ -12,18 +12,20 @@ namespace TestfallDB
         public string Precondition { get; set; }
         public int Velocity { get; set; }
         public string ExpectedResult { get; set; }
+        public int Nr { get; set; }
 
 
         public List<Testcase> TestcaseList = new List<Testcase>();
 
 
         public Testcase() { }
-        public Testcase(string name, string precondition, int velocity, string result)
+        public Testcase(string name, string precondition, int velocity, string result, int nr)
         {
             this.Testname = name;
             this.Precondition = precondition;
             this.Velocity = velocity;
             this.ExpectedResult = result;
+            this.Nr = nr;
         }
     }
 }
