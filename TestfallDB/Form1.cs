@@ -36,6 +36,7 @@ namespace TestfallDB
                 sqlTest.SqlToComponent("Bauteile",dataComponents);
 
                 dataComponents.ShowDataToListView(listView1);
+                dataComponents.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -56,6 +57,7 @@ namespace TestfallDB
                 
 
                 dataComponents.ShowDataToListView(listView1);
+                dataComponents.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -70,11 +72,13 @@ namespace TestfallDB
                 Components dataComponents = new Components();
 
                 SQL_Edit sqlTest = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
-                sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
+                //sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlToComponent("Bauteile", dataComponents);
+                //sqlTest.SqlToComponent("Testfaelle", dataComponents);
 
                 dataComponents.ShowDataToListView(listView1);
+                dataComponents.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
