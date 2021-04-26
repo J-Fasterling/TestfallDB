@@ -64,7 +64,6 @@ namespace TestfallDB
         }
 
 
-
         public void SqlToTestcase(string table,Components cComponents)
         {
             Command = new SqlCommand("SELECT * FROM " + table, Connection);
@@ -77,7 +76,7 @@ namespace TestfallDB
             {
                 while (Reader.Read())
                 {
-                    test = new Testcase(Reader.GetString(0), Reader.GetString(1), Reader.GetInt32(2), Reader.GetString(3), num);
+                    test = new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4));
                     num++;
                     test.TestcaseList.Add(test);
                 }
