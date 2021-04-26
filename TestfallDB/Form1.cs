@@ -30,7 +30,7 @@ namespace TestfallDB
             {
                 Components dataComponents = new Components();
 
-                SQL_Edit sqlTest = new SQL_Edit("Data Source = FASTLA0030\\TESTFALLSERVER; Initial Catalog = TestfallDatenbank; Integrated Security = True");
+                SQL_Edit sqlTest = new SQL_Edit("Data Source = FASTLA0030\\TESTFALLSERVER; Initial Catalog = TestfallDatenbank; Integrated Security = True; MultipleActiveResultSets=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 sqlTest.SqlToComponent("Bauteile",dataComponents);
