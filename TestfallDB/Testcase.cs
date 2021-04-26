@@ -29,11 +29,11 @@ namespace TestfallDB
             this.Velocity = velocity;
             this.ExpectedResult = result;           
         }
-        private void fillDataTable(List<Testcase> lComponents, DataTable dt)
+        private void fillDataTable(List<Testcase> lTestcases, DataTable dt)
         {
-            foreach (var component in lComponents)
+            foreach (var testcase in lTestcases)
             {
-                dt.Rows.Add(component.Nr, component.Testname, component.Precondition, component.Velocity, component.ExpectedResult);
+                dt.Rows.Add(testcase.Nr, testcase.Testname, testcase.Precondition, testcase.Velocity, testcase.ExpectedResult);
             }
         }
 

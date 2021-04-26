@@ -64,21 +64,21 @@ namespace TestfallDB
         }
 
 
-        public void SqlToTestcase(string table,Components cComponents)
+        public void SqlToTestcase(string table,Testcase tTestcase)
         {
             Command = new SqlCommand("SELECT * FROM " + table, Connection);
             Reader = Command.ExecuteReader();
             int num = 1;
 
-            Testcase test = new Testcase();
+            Testcase testcase = new Testcase();
 
             try
             {
                 while (Reader.Read())
                 {
-                    test = new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4));
+                    testcase = new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4));
                     num++;
-                    test.TestcaseList.Add(test);
+                    tTestcase.TestcaseList.Add(testcase);
                 }
             }
             catch (Exception ex)

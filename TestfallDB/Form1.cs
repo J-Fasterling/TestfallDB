@@ -29,16 +29,16 @@ namespace TestfallDB
             try
             {
                 Components dataComponents = new Components();
-                Components dataComponents2 = new Components();
+                Testcase dataTestcases = new Testcase();
 
                 SQL_Edit sqlTest = new SQL_Edit("Data Source = FASTLA0030\\TESTFALLSERVER; Initial Catalog = TestfallDatenbank; Integrated Security = True; MultipleActiveResultSets=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Chef.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 sqlTest.SqlToComponent("Bauteile",dataComponents);
-                sqlTest.SqlToTestcase("Testfaelle", dataComponents2);
+                sqlTest.SqlToTestcase("Testfaelle", dataTestcases);
 
                 dataComponents.ShowDataToListView(listView1);
-                dataComponents2.ShowDataToListView(listView2);
+                dataTestcases.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -51,17 +51,17 @@ namespace TestfallDB
             try
             {
                 Components dataComponents = new Components();
-                Components dataComponents2 = new Components();
+                Testcase dataTestcases = new Testcase();
 
                 SQL_Edit sqlTest = new SQL_Edit("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True; MultipleActiveResultSets=True");
                 MessageBox.Show("Verbindung mit Datenbank von " + Jerry.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 sqlTest.SqlToComponent("Bauteile", dataComponents);
-                sqlTest.SqlToTestcase("Testfaelle", dataComponents2);
+                sqlTest.SqlToTestcase("Testfaelle", dataTestcases);
 
 
                 dataComponents.ShowDataToListView(listView1);
-                dataComponents2.ShowDataToListView(listView2);
+                dataTestcases.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -74,16 +74,16 @@ namespace TestfallDB
             try
             {
                 Components dataComponents = new Components();
-                Components dataComponents2 = new Components();
+                Testcase dataTestcases = new Testcase();
 
                 SQL_Edit sqlTest = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
                 //sqlTest.SqlAdd("Bauteile", "Bauteil", "Marius ist klasse!");
                 MessageBox.Show("Verbindung mit Datenbank von " + Grubelix.Name + " war erfolgreich.", "Verbindung erfolgt", MessageBoxButtons.OK);
                 sqlTest.SqlToComponent("Bauteile", dataComponents);
-                sqlTest.SqlToTestcase("Testfaelle", dataComponents2);
+                sqlTest.SqlToTestcase("Testfaelle", dataTestcases);
 
                 dataComponents.ShowDataToListView(listView1);
-                dataComponents2.ShowDataToListView(listView2);
+                dataTestcases.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
