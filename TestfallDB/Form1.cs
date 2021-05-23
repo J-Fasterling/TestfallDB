@@ -56,10 +56,6 @@ namespace TestfallDB
         {
             try
             {
-                sqlCon.deleteAllData("Bauteile");
-                sqlCon.deleteAllData("Testfaelle");
-                sqlCon.SqlAdd("Bauteile", "Bauteil", "Test");
-
                 sqlCon.SqlToComponent("Bauteile", dataComponents);
                 sqlCon.SqlToTestcase("Testfaelle", dataTestcases);
 
@@ -181,6 +177,8 @@ namespace TestfallDB
                             sqlServer.SqlAdd("Testfaelle", "Geschwindigkeit", test.Velocity.ToString());
                             sqlServer.SqlAdd("Testfaelle", "Erwartetes Resultat", test.ExpectedResult);
                         }
+                        dataComponents.ShowDataToListView(listView2);
+
                     }
                 }
                 catch (Exception ex)
@@ -228,6 +226,7 @@ namespace TestfallDB
                         {
                             sqlServer.SqlAdd("Bauteile", "Bauteil", comp.Component);
                         }
+                        dataComponents.ShowDataToListView(listView1);
                     }
                 }
                 catch (Exception ex)
