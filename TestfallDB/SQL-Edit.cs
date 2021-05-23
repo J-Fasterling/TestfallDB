@@ -31,11 +31,18 @@ namespace TestfallDB
         }
 
 
-        public void SqlAdd(string tableName, string column, string toAdd)
+        public void AddComp(string column, string toAdd)
         {
-            Command = new SqlCommand("insert into " + tableName + " values (@" + column + ")", Connection);
+            Command = new SqlCommand("INSERT INTO Bauteile VALUES (@" + column + ")", Connection);
             Command.Parameters.AddWithValue("@" + column, toAdd);
             Command.BeginExecuteNonQuery();
+        }
+
+
+        public void AddTest(string name, string precondition, int velocity, string expectResult)
+        {
+            Command = new SqlCommand("INSERT INTO Testfaelle VALUES ('" + name + "', '" + precondition + "', '" + velocity + "', '" + expectResult + "')", Connection);
+            Reader = Command.ExecuteReader();
         }
 
 

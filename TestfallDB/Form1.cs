@@ -28,17 +28,17 @@ namespace TestfallDB
             {
                 case "JFasterling":
                     sqlServer = new SQL_Edit("Data Source = FASTLA0030\\TESTFALLSERVER; Initial Catalog = TestfallDatenbank; Integrated Security = True; MultipleActiveResultSets=True");
-                    connectToData(sqlServer);
+                    connectToData();
                     break;
 
                 case "JDiekamp":
                     sqlServer = new SQL_Edit("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True; MultipleActiveResultSets=True");
-                    connectToData(sqlServer);
+                    connectToData();
                     break;
 
                 case "MGrubel":
                     sqlServer = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
-                    connectToData(sqlServer);
+                    connectToData();
                     break;
 
                 default:
@@ -52,12 +52,12 @@ namespace TestfallDB
 
         }
 
-        private void connectToData(SQL_Edit sqlCon)
+        private void connectToData()
         {
             try
             {
-                sqlCon.SqlToComponent("Bauteile", dataComponents);
-                sqlCon.SqlToTestcase("Testfaelle", dataTestcases);
+                sqlServer.SqlToComponent("Bauteile", dataComponents);
+                sqlServer.SqlToTestcase("Testfaelle", dataTestcases);
 
                 dataComponents.ShowDataToListView(listView1);
                 dataTestcases.ShowDataToListView(listView2);
@@ -108,7 +108,7 @@ namespace TestfallDB
 
 
         /// <summary>
-        /// Speichert Daten der DAtenbank in externer Xml-Datei
+        /// Speichert Bauteildaten der Datenbank in externer Xml-Datei
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -127,7 +127,7 @@ namespace TestfallDB
                 if (saveStream.FileName != "")
                 {
                     FileStream fs = (FileStream)saveStream.OpenFile();
-                    testSerializer.Serialize(fs, dataTestcases.TestcaseList);
+                    testSerializer.Serialize(fs, dataComponents.ComponentList);
                     fs.Close();
                 }
             }
@@ -172,14 +172,9 @@ namespace TestfallDB
 
                         foreach (Testcase test in dataTestcases.TestcaseList)
                         {
-                            sqlServer.SqlAdd("Testfaelle", "Testname", test.Testname);
-                            sqlServer.SqlAdd("Testfaelle", "Vorbedingung", test.Precondition);
-                            sqlServer.SqlAdd("Testfaelle", "Geschwindigkeit", test.Velocity.ToString());
-                            sqlServer.SqlAdd("Testfaelle", "Erwartetes Resultat", test.ExpectedResult);
+                            sqlServer.AddTest(test.Testname, test.Precondition, test.Velocity, test.ExpectedResult);
                         }
-                        sqlServer.SqlToComponent("Bauteile", dataComponents);
-                        dataTestcases.ShowDataToListView(listView2);
-
+                        connectToData();
                     }
                 }
                 catch (Exception ex)
@@ -197,6 +192,7 @@ namespace TestfallDB
         /// <param name="e"></param>
         private void bauteileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Abfrage, ob die eigene Datenbank überschrieben werden soll
             DialogResult result = MessageBox.Show("Beim Laden der Datei werden Ihre bisherigen Datenbankdatein überschrieben. Wollen SIe trotzdem fortfahren?",
                     "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
 
@@ -207,6 +203,7 @@ namespace TestfallDB
                     XmlSerializer compDeserializer = new XmlSerializer(typeof(List<Components>));
                     OpenFileDialog file = new OpenFileDialog();
 
+                    //FileDialog um Xml Datei zu suchen
                     file.InitialDirectory = "c:\\";
                     file.Filter = "xml files (*.xml)|*.xml";
                     file.FilterIndex = 2;
@@ -225,11 +222,12 @@ namespace TestfallDB
 
                         foreach (Components comp in dataComponents.ComponentList)
                         {
-                            sqlServer.SqlAdd("Bauteile", "Bauteil", comp.Component);
+                            sqlServer.AddComp("Bauteil", comp.Component);
                         }
                         sqlServer.SqlToTestcase("Testfaelle", dataTestcases);
                         dataComponents.ShowDataToListView(listView1);
                     }
+                    connectToData();
                 }
                 catch (Exception ex)
                 {
