@@ -70,6 +70,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +145,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Download %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_icon-icons.com_49871.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_icon-icons.com_70204.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ontask4x_86986.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ontask4x_86986 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel-cross_icon-icons.com_71726.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dash_106469.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dash_106469 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

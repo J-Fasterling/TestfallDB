@@ -15,13 +15,11 @@ namespace TestfallDB
     public partial class Form1 : Form
     {
         SQL_Edit sqlServer;
-        Components dataComponents = new Components();
-        Testcase dataTestcases = new Testcase();
+        GlobalVariables gGlobal = new GlobalVariables();
 
         public Form1(string sUser)
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
 
             //Stellt Verbindung mit Datenbank des ausgewählten Users her
             switch (sUser)
@@ -56,11 +54,10 @@ namespace TestfallDB
         {
             try
             {
-                sqlServer.SqlToComponent("Bauteile", dataComponents);
-                sqlServer.SqlToTestcase("Testfaelle", dataTestcases);
+                sqlServer.SqlToComponent("Bauteile", gGlobal);
+                sqlServer.SqlToTestcase("Testfaelle", gGlobal);
 
-                dataComponents.ShowDataToListView(listView1);
-                dataTestcases.ShowDataToListView(listView2);
+                gGlobal.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -96,7 +93,7 @@ namespace TestfallDB
                 if (saveStream.FileName != "")
                 {
                     FileStream fs = (FileStream)saveStream.OpenFile();
-                    testSerializer.Serialize(fs, dataTestcases.TestcaseList);
+                    testSerializer.Serialize(fs, gGlobal.allTestcases);
                     fs.Close();
                 }    
            }
@@ -127,7 +124,7 @@ namespace TestfallDB
                 if (saveStream.FileName != "")
                 {
                     FileStream fs = (FileStream)saveStream.OpenFile();
-                    testSerializer.Serialize(fs, dataComponents.ComponentList);
+                    testSerializer.Serialize(fs, gGlobal.allComponents);
                     fs.Close();
                 }
             }
@@ -165,17 +162,17 @@ namespace TestfallDB
                         var fileStream = file.OpenFile();
 
                         StreamReader sReader = new StreamReader(fileStream);
-                        dataTestcases.TestcaseList = (List<Testcase>)testDeserializer.Deserialize(sReader);
+                        gGlobal.allTestcases = (List<Testcase>)testDeserializer.Deserialize(sReader);
                         fileStream.Close();
 
                         sqlServer.deleteAllData("Testfaelle");
 
-                        foreach (Testcase test in dataTestcases.TestcaseList)
+                        foreach (Testcase test in gGlobal.allTestcases)
                         {
                             sqlServer.AddTest(test.Testname, test.Precondition, test.Velocity, test.ExpectedResult);
                         }
                         //connectToData();
-                        dataTestcases.ShowDataToListView(listView2);
+                        gGlobal.ShowDataToListView(listView2);
                     }
                 }
                 catch (Exception ex)
@@ -215,24 +212,114 @@ namespace TestfallDB
                         var fileStream = file.OpenFile();
 
                         StreamReader sReader = new StreamReader(fileStream);
-                        dataComponents.ComponentList.Clear();
-                        dataComponents.ComponentList = (List<Components>)compDeserializer.Deserialize(sReader);
+                        gGlobal.allComponents.Clear();
+                        gGlobal.allComponents = (List<Components>)compDeserializer.Deserialize(sReader);
                         fileStream.Close();
 
                         sqlServer.deleteAllData("Bauteile");
 
-                        foreach (Components comp in dataComponents.ComponentList)
+                        foreach (Components comp in gGlobal.allComponents)
                         {
                             sqlServer.AddComp("Bauteil", comp.Component);
                         }
                     }
-                    dataComponents.ShowDataToListView(listView1);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void benutzerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.menuStrip1.ForeColor = Color.Black;
+        }
+
+        private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if(listView2.SelectedItems.Count > 0)
+            {
+                label_Precondition.Text = e.Item.SubItems[2].Text;
+                label_Result.Text = e.Item.SubItems[4].Text;
+                label_Velocity.Text = e.Item.SubItems[3].Text + " km/h";
+            }
+        }
+
+        private void button_NIO_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                listView2.FocusedItem.BackColor = Color.Red;
+            }
+        }
+
+        private void button_NR_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                listView2.FocusedItem.BackColor = Color.Gray;
+            }
+        }
+
+        private void button_IO_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                listView2.FocusedItem.BackColor = Color.Green;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
+
+        private void checkBox_30_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
+
+        private void checkBox_50_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
+
+        private void checkBox_100_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
+
+        private void checkBox_150_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
+
+        private void fillTestOverview(bool isIncluded, int velocity, CheckBox check)
+        {
+            if (check.Checked && !isIncluded)
+            {
+                gGlobal.listToTest.AddRange(sqlServer.sortByVelocity(velocity));
+                gGlobal.ShowDataToListView(listView2);
+                isIncluded = true;
+            }
+        }
+
+
+        private void checkAllCheckboxes()
+        {
+            gGlobal.listToTest.Clear();
+
+            fillTestOverview(gGlobal.is0Included, 0, checkBox_0);
+            fillTestOverview(gGlobal.is30Included, 30, checkBox_30);
+            fillTestOverview(gGlobal.is50Included, 50, checkBox_50);
+            fillTestOverview(gGlobal.is100Included, 100, checkBox_100);
+            fillTestOverview(gGlobal.is130Included, 130, checkBox_130);
         }
     }
 }

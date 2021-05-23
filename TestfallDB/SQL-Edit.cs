@@ -46,53 +46,45 @@ namespace TestfallDB
         }
 
 
-        public void SqlToComponent(string table,Components cComponents)
+        public void SqlToComponent(string table, GlobalVariables globals)
         {
             Command = new SqlCommand("SELECT Bauteil FROM " + table, Connection);
             Reader = Command.ExecuteReader();
             int num = 1;
 
-            Components component = new Components();
-
             try
             {
                 while (Reader.Read())
                 {
-                    component = new Components(Reader.GetString(0), num);
+                    globals.allComponents.Add(new Components(Reader.GetString(0), num));
                     num++;
-                    cComponents.ComponentList.Add(component);
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //return component.ComponentList;   
         }
 
 
-        public void SqlToTestcase(string table,Testcase tTestcase)
+        public void SqlToTestcase(string table, GlobalVariables globals)
         {
             Command = new SqlCommand("SELECT * FROM " + table, Connection);
             Reader = Command.ExecuteReader();
             int num = 1;
 
-            Testcase testcase = new Testcase();
-
             try
             {
                 while (Reader.Read())
                 {
-                    testcase = new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4));
+                    globals.allTestcases.Add(new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4)));
                     num++;
-                    tTestcase.TestcaseList.Add(testcase);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //return test.TestcaseList;
         }
 
 
@@ -101,6 +93,31 @@ namespace TestfallDB
         {
             Command = new SqlCommand("DELETE FROM " + table, Connection);
             Reader = Command.ExecuteReader();
+        }
+
+
+        public List<Testcase> sortByVelocity(int velocity)
+        {
+            List<Testcase> tempList = new List<Testcase>();
+
+            try
+            {
+                Command = new SqlCommand("SELECT * FROM Testfaelle WHERE Geschwindigkeit = '" + velocity.ToString() + "'", Connection);
+                Reader = Command.ExecuteReader();
+                int num = 1;
+
+                while (Reader.Read())
+                {
+                    tempList.Add(new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4)));
+                    num++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return tempList;
         }
 
     }
