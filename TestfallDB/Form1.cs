@@ -177,7 +177,8 @@ namespace TestfallDB
                             sqlServer.SqlAdd("Testfaelle", "Geschwindigkeit", test.Velocity.ToString());
                             sqlServer.SqlAdd("Testfaelle", "Erwartetes Resultat", test.ExpectedResult);
                         }
-                        dataComponents.ShowDataToListView(listView2);
+                        sqlServer.SqlToComponent("Bauteile", dataComponents);
+                        dataTestcases.ShowDataToListView(listView2);
 
                     }
                 }
@@ -226,6 +227,7 @@ namespace TestfallDB
                         {
                             sqlServer.SqlAdd("Bauteile", "Bauteil", comp.Component);
                         }
+                        sqlServer.SqlToTestcase("Testfaelle", dataTestcases);
                         dataComponents.ShowDataToListView(listView1);
                     }
                 }
