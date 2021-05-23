@@ -23,6 +23,7 @@ namespace TestfallDB
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
+            //Stellt Verbindung mit Datenbank des ausgewählten Users her
             switch (sUser)
             {
                 case "JFasterling":
@@ -51,8 +52,6 @@ namespace TestfallDB
 
         }
 
-        #region Benutzerauswahl
-
         private void connectToData(SQL_Edit sqlCon)
         {
             try
@@ -73,43 +72,163 @@ namespace TestfallDB
             }
         }
 
-        
-        #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void benutzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //Die gesamte Anwendung wird geschlossen
             Application.Exit();
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
+        {  
+           try
+           {
+                XmlSerializer testSerializer = new XmlSerializer(typeof(List<Testcase>));
+                SaveFileDialog saveStream = new SaveFileDialog();
+
+                saveStream.Title = "Speichern der Datenbankdatein";
+                saveStream.FileName = "TestfallXmlData";
+                saveStream.DefaultExt = ".xml";
+                saveStream.ShowDialog();
+
+                if (saveStream.FileName != "")
+                {
+                    FileStream fs = (FileStream)saveStream.OpenFile();
+                    testSerializer.Serialize(fs, dataTestcases.TestcaseList);
+                    fs.Close();
+                }    
+           }
+           catch (Exception ex)
+           {
+                MessageBox.Show(ex.Message);
+           }
+        }
+
+
+        /// <summary>
+        /// Speichert Daten der DAtenbank in externer Xml-Datei
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ladenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Wenn Sie jetzt fortfahren wird Ihre Datenbank Vorlage für alle anderen Datenbanken. Wollen Sie trotzdem fortfahren?",
-                "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            try
+            {
+                XmlSerializer testSerializer = new XmlSerializer(typeof(List<Components>));
+                SaveFileDialog saveStream = new SaveFileDialog();
+
+                saveStream.Title = "Speichern der Datenbankdatein";
+                saveStream.FileName = "BauteilXmlData";
+                saveStream.DefaultExt = ".xml";
+                saveStream.ShowDialog();
+
+                if (saveStream.FileName != "")
+                {
+                    FileStream fs = (FileStream)saveStream.OpenFile();
+                    testSerializer.Serialize(fs, dataTestcases.TestcaseList);
+                    fs.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Laedt Testfaelle in die Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void testfälleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Beim Laden der Datei werden Ihre bisherigen Datenbankdatein überschrieben. Wollen SIe trotzdem fortfahren?",
+                    "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    XmlSerializer testSerializer = new XmlSerializer(typeof(List<Testcase>));
-                    XmlSerializer compSerializer = new XmlSerializer(typeof(List<Components>));
+                    XmlSerializer testDeserializer = new XmlSerializer(typeof(List<Testcase>));
+                    OpenFileDialog file = new OpenFileDialog();
 
-                    Stream sWriteTest = File.OpenWrite("Testcases_Backup");
-                    Stream sWriteComp = File.OpenWrite("Components_Backup");
+                    file.InitialDirectory = "c:\\";
+                    file.Filter = "xml files (*.xml)|*.xml";
+                    file.FilterIndex = 2;
+                    file.RestoreDirectory = true;
 
-                    testSerializer.Serialize(sWriteTest, dataTestcases.TestcaseList);
-                    compSerializer.Serialize(sWriteComp, dataComponents.ComponentList);
+                    if (file.ShowDialog() == DialogResult.OK)
+                    {
+                        var fileStream = file.OpenFile();
 
-                    sWriteTest.Close();
-                    sWriteComp.Close();
+                        StreamReader sReader = new StreamReader(fileStream);
+                        dataTestcases.TestcaseList = (List<Testcase>)testDeserializer.Deserialize(sReader);
+                        fileStream.Close();
+
+                        sqlServer.deleteAllData("Testfaelle");
+
+                        foreach (Testcase test in dataTestcases.TestcaseList)
+                        {
+                            sqlServer.SqlAdd("Testfaelle", "Testname", test.Testname);
+                            sqlServer.SqlAdd("Testfaelle", "Vorbedingung", test.Precondition);
+                            sqlServer.SqlAdd("Testfaelle", "Geschwindigkeit", test.Velocity.ToString());
+                            sqlServer.SqlAdd("Testfaelle", "Erwartetes Resultat", test.ExpectedResult);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Laedt Bauteile in die Datenbank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bauteileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Beim Laden der Datei werden Ihre bisherigen Datenbankdatein überschrieben. Wollen SIe trotzdem fortfahren?",
+                    "Achtung", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    XmlSerializer compDeserializer = new XmlSerializer(typeof(List<Components>));
+                    OpenFileDialog file = new OpenFileDialog();
+
+                    file.InitialDirectory = "c:\\";
+                    file.Filter = "xml files (*.xml)|*.xml";
+                    file.FilterIndex = 2;
+                    file.RestoreDirectory = true;
+
+                    if (file.ShowDialog() == DialogResult.OK)
+                    {
+                        var fileStream = file.OpenFile();
+
+                        StreamReader sReader = new StreamReader(fileStream);
+                        dataTestcases.TestcaseList = (List<Testcase>)compDeserializer.Deserialize(sReader);
+                        fileStream.Close();
+
+
+                        sqlServer.deleteAllData("Bauteile");
+
+                        foreach (Components comp in dataComponents.ComponentList)
+                        {
+                            sqlServer.SqlAdd("Bauteile", "Bauteil", comp.Component);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {

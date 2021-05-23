@@ -33,6 +33,8 @@ namespace TestfallDB
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.benutzerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.benutzerWechselnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,8 +53,9 @@ namespace TestfallDB
             this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testfälleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bauteileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2BindingSource)).BeginInit();
@@ -80,12 +83,12 @@ namespace TestfallDB
             // benutzerToolStripMenuItem
             // 
             this.benutzerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.benutzerWechselnToolStripMenuItem});
+            this.benutzerWechselnToolStripMenuItem,
+            this.ladenToolStripMenuItem});
             this.benutzerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.benutzerToolStripMenuItem.Name = "benutzerToolStripMenuItem";
             this.benutzerToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.benutzerToolStripMenuItem.Text = "Datenbank";
-            this.benutzerToolStripMenuItem.Click += new System.EventHandler(this.benutzerToolStripMenuItem_Click);
             // 
             // benutzerWechselnToolStripMenuItem
             // 
@@ -94,7 +97,21 @@ namespace TestfallDB
             this.ladenToolStripMenuItem1});
             this.benutzerWechselnToolStripMenuItem.Name = "benutzerWechselnToolStripMenuItem";
             this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.benutzerWechselnToolStripMenuItem.Text = "Synchronisieren";
+            this.benutzerWechselnToolStripMenuItem.Text = "Speichern";
+            // 
+            // speichernToolStripMenuItem
+            // 
+            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.speichernToolStripMenuItem.Text = "Testfälle";
+            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            // 
+            // ladenToolStripMenuItem1
+            // 
+            this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
+            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ladenToolStripMenuItem1.Text = "Bauteile";
+            this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
             // 
             // listView1
             // 
@@ -183,18 +200,28 @@ namespace TestfallDB
             // 
             this.dataTable1BindingSource3.DataSource = this.dataSet1BindingSource;
             // 
-            // speichernToolStripMenuItem
+            // ladenToolStripMenuItem
             // 
-            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.speichernToolStripMenuItem.Text = "Speichern";
-            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            this.ladenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testfälleToolStripMenuItem,
+            this.bauteileToolStripMenuItem});
+            this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
+            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ladenToolStripMenuItem.Text = "Laden";
             // 
-            // ladenToolStripMenuItem1
+            // testfälleToolStripMenuItem
             // 
-            this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
-            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.ladenToolStripMenuItem1.Text = "Laden";
+            this.testfälleToolStripMenuItem.Name = "testfälleToolStripMenuItem";
+            this.testfälleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testfälleToolStripMenuItem.Text = "Testfälle";
+            this.testfälleToolStripMenuItem.Click += new System.EventHandler(this.testfälleToolStripMenuItem_Click);
+            // 
+            // bauteileToolStripMenuItem
+            // 
+            this.bauteileToolStripMenuItem.Name = "bauteileToolStripMenuItem";
+            this.bauteileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bauteileToolStripMenuItem.Text = "Bauteile";
+            this.bauteileToolStripMenuItem.Click += new System.EventHandler(this.bauteileToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -250,6 +277,9 @@ namespace TestfallDB
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ladenToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ladenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testfälleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bauteileToolStripMenuItem;
     }
 }
 
