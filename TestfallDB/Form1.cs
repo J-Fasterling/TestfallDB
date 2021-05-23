@@ -214,7 +214,7 @@ namespace TestfallDB
                         var fileStream = file.OpenFile();
 
                         StreamReader sReader = new StreamReader(fileStream);
-                        dataTestcases.TestcaseList = (List<Testcase>)compDeserializer.Deserialize(sReader);
+                        dataComponents.ComponentList = (List<Components>)compDeserializer.Deserialize(sReader);
                         fileStream.Close();
 
 
@@ -224,8 +224,6 @@ namespace TestfallDB
                         {
                             sqlServer.AddComp("Bauteil", comp.Component);
                         }
-                        sqlServer.SqlToTestcase("Testfaelle", dataTestcases);
-                        dataComponents.ShowDataToListView(listView1);
                     }
                     connectToData();
                 }
