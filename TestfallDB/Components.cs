@@ -8,12 +8,15 @@ using System.Windows.Forms;
 
 namespace TestfallDB
 {
-    class Components
+    [Serializable()]
+    public class Components
     {
         public string Component { get; set; }
         public int Nr { get; set; }
 
+
         public List<Components> ComponentList = new List<Components>();
+
 
         public Components() { }
 

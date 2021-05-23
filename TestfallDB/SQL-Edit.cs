@@ -88,5 +88,13 @@ namespace TestfallDB
             //return test.TestcaseList;
         }
 
+
+
+        public void deleteAllData(string table)
+        {
+            Command = new SqlCommand("DELETE FROM " + table, Connection);
+            Reader = Command.ExecuteReader();
+        }
+
     }
 }

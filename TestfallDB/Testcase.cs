@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace TestfallDB
 {
-    class Testcase
+    [Serializable()]
+    public class Testcase
     {
         public int Nr { get; set; }
         public string Testname { get; set; }
