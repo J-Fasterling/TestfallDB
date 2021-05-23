@@ -174,7 +174,8 @@ namespace TestfallDB
                         {
                             sqlServer.AddTest(test.Testname, test.Precondition, test.Velocity, test.ExpectedResult);
                         }
-                        connectToData();
+                        //connectToData();
+                        dataTestcases.ShowDataToListView(listView2);
                     }
                 }
                 catch (Exception ex)
@@ -214,9 +215,9 @@ namespace TestfallDB
                         var fileStream = file.OpenFile();
 
                         StreamReader sReader = new StreamReader(fileStream);
+                        dataComponents.ComponentList.Clear();
                         dataComponents.ComponentList = (List<Components>)compDeserializer.Deserialize(sReader);
                         fileStream.Close();
-
 
                         sqlServer.deleteAllData("Bauteile");
 
@@ -225,7 +226,7 @@ namespace TestfallDB
                             sqlServer.AddComp("Bauteil", comp.Component);
                         }
                     }
-                    connectToData();
+                    dataComponents.ShowDataToListView(listView1);
                 }
                 catch (Exception ex)
                 {
