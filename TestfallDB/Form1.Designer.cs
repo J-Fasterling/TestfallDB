@@ -499,15 +499,16 @@ namespace TestfallDB
             "Touareg"});
             this.comboBox1.Location = new System.Drawing.Point(12, 371);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(174, 26);
+            this.comboBox1.Size = new System.Drawing.Size(170, 26);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 334);
+            this.label2.Location = new System.Drawing.Point(10, 334);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 19);
             this.label2.TabIndex = 6;

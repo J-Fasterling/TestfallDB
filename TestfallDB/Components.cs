@@ -22,5 +22,10 @@ namespace TestfallDB
             this.Component = component;
             this.Nr = nr;
         }
+
+        public Components(string component)
+        {
+            this.Component = component;
+        }
     }
 }

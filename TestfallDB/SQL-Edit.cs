@@ -120,5 +120,35 @@ namespace TestfallDB
             return tempList;
         }
 
+
+        public List<Testcase> sortByComponentsAndVelocity(List<Components> carConfiguration, List<int> velocity)
+        {
+            List<Testcase> tempList = new List<Testcase>();
+
+            try
+            {
+                foreach (Components comp in carConfiguration)
+                {
+                    foreach (int v in velocity)
+                    {
+                        Command = new SqlCommand("SELECT * FROM Testfaelle WHERE Testname = '" + comp.Component + "' AND Geschwindigkeit = '" + v.ToString() + "'", Connection);
+                        Reader = Command.ExecuteReader();
+                        int num = 1;
+
+                        while (Reader.Read())
+                        {
+                            tempList.Add(new Testcase(num, Reader.GetString(1), Reader.GetString(2), Reader.GetInt32(3), Reader.GetString(4)));
+                            num++;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return tempList;
+        }
     }
 }

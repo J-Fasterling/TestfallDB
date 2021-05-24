@@ -79,9 +79,9 @@ namespace TestfallDB
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
-        {  
-           try
-           {
+        {
+            try
+            {
                 XmlSerializer testSerializer = new XmlSerializer(typeof(List<Testcase>));
                 SaveFileDialog saveStream = new SaveFileDialog();
 
@@ -95,12 +95,12 @@ namespace TestfallDB
                     FileStream fs = (FileStream)saveStream.OpenFile();
                     testSerializer.Serialize(fs, gGlobal.allTestcases);
                     fs.Close();
-                }    
-           }
-           catch (Exception ex)
-           {
+                }
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-           }
+            }
         }
 
 
@@ -243,7 +243,7 @@ namespace TestfallDB
 
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if(listView2.SelectedItems.Count > 0)
+            if (listView2.SelectedItems.Count > 0)
             {
                 label_Precondition.Text = e.Item.SubItems[2].Text;
                 label_Result.Text = e.Item.SubItems[4].Text;
@@ -304,8 +304,9 @@ namespace TestfallDB
         {
             if (check.Checked && !isIncluded)
             {
-                gGlobal.listToTest.AddRange(sqlServer.sortByVelocity(velocity));
-                gGlobal.ShowDataToListView(listView2);
+                gGlobal.velocityList.Add(velocity);
+
+                //gGlobal.ShowDataToListView(listView2);
                 isIncluded = true;
             }
         }
@@ -313,13 +314,76 @@ namespace TestfallDB
 
         private void checkAllCheckboxes()
         {
-            gGlobal.listToTest.Clear();
+            gGlobal.velocityList.Clear();
 
             fillTestOverview(gGlobal.is0Included, 0, checkBox_0);
             fillTestOverview(gGlobal.is30Included, 30, checkBox_30);
             fillTestOverview(gGlobal.is50Included, 50, checkBox_50);
             fillTestOverview(gGlobal.is100Included, 100, checkBox_100);
             fillTestOverview(gGlobal.is130Included, 130, checkBox_130);
+
+            if (comboBox1.Text != "")
+            {
+                checkCarConfiguration();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        {
+            checkCarConfiguration();
+            /*gGlobal.listToTest.Clear();
+
+            switch (comboBox1.SelectedItem.ToString())
+            {
+                case "Up":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.up, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Polo":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Polo, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Golf":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Golf, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Touareg":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Touareg, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+            }*/
+        }
+
+        private void checkCarConfiguration()
+        {
+            gGlobal.listToTest.Clear();
+
+            switch (comboBox1.SelectedItem.ToString())
+            {
+                case "Up":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.up, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Polo":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Polo, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Golf":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Golf, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+
+                case "Touareg":
+                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Touareg, gGlobal.velocityList);
+                    gGlobal.ShowDataToListView(listView2);
+                    break;
+            }
         }
     }
 }

@@ -12,9 +12,59 @@ namespace TestfallDB
     {
         public List<Testcase> listToTest = new List<Testcase>();
 
+        public List<int> velocityList = new List<int>();
+
         public List<Testcase> allTestcases = new List<Testcase>();
 
         public List<Components> allComponents = new List<Components>();
+
+        #region erstellen der Fahrzeugkonfigurationen
+        public List<Components> up = new List<Components>
+        {
+            new Components("Kopfairbag"),
+            new Components("ABS"),
+            new Components("ESC")
+        };
+
+        public List<Components> Polo = new List<Components>
+        {
+            new Components("Kopfairbag"),
+            new Components("ABS"),
+            new Components("ESC"),
+            new Components("Fernlichtassistent"),
+            new Components("Parksensoren")
+        };
+
+        public List<Components> Golf = new List<Components>
+        {
+            new Components("Kopfairbag"),
+            new Components("ABS"),
+            new Components("ESC"),
+            new Components("Fernlichtassistent"),
+            new Components("Parksensoren"),
+            new Components("Launch Control"),
+            new Components("GRA"),
+            new Components("ACC"),
+            new Components("Notbremsfunktion")
+        };
+
+
+        public List<Components> Touareg = new List<Components>
+        {
+            new Components("Kopfairbag"),
+            new Components("ABS"),
+            new Components("ESC"),
+            new Components("Fernlichtassistent"),
+            new Components("Parksensoren"),
+            new Components("Launch Control"),
+            new Components("GRA"),
+            new Components("ACC"),
+            new Components("Notbremsfunktion"),
+            new Components("Spurhalteassistent"),
+            new Components("Totwinkelassistent"),
+            new Components("Rueckfahrkamera")
+        };
+        #endregion
 
         public bool is0Included = false;
         public bool is30Included = false;
