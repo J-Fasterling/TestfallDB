@@ -279,7 +279,10 @@ namespace TestfallDB
         {
             checkAllCheckboxes();
         }
-
+        private void checkBox_7_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAllCheckboxes();
+        }
         private void checkBox_30_CheckedChanged(object sender, EventArgs e)
         {
             checkAllCheckboxes();
@@ -306,7 +309,6 @@ namespace TestfallDB
             {
                 gGlobal.velocityList.Add(velocity);
 
-                //gGlobal.ShowDataToListView(listView2);
                 isIncluded = true;
             }
         }
@@ -317,6 +319,7 @@ namespace TestfallDB
             gGlobal.velocityList.Clear();
 
             fillTestOverview(gGlobal.is0Included, 0, checkBox_0);
+            fillTestOverview(gGlobal.is7Included, 7, checkBox_7);
             fillTestOverview(gGlobal.is30Included, 30, checkBox_30);
             fillTestOverview(gGlobal.is50Included, 50, checkBox_50);
             fillTestOverview(gGlobal.is100Included, 100, checkBox_100);
@@ -342,24 +345,30 @@ namespace TestfallDB
             {
                 case "Up":
                     gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.up, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
                     break;
 
                 case "Polo":
                     gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Polo, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
                     break;
 
                 case "Golf":
                     gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Golf, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
                     break;
 
                 case "Touareg":
                     gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Touareg, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
                     break;
             }
+
+            int cnt = 1;
+            foreach(Testcase test in gGlobal.listToTest)
+            {
+                test.Nr = cnt;
+                cnt++;
+            }
+
+            gGlobal.ShowDataToListView(listView2);
+
         }
     }
 }

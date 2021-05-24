@@ -80,6 +80,7 @@ namespace TestfallDB
             this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox_7 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -177,7 +178,7 @@ namespace TestfallDB
             this.speichernToolStripMenuItem,
             this.ladenToolStripMenuItem1});
             this.benutzerWechselnToolStripMenuItem.Name = "benutzerWechselnToolStripMenuItem";
-            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.benutzerWechselnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.benutzerWechselnToolStripMenuItem.Text = "Speichern";
             // 
             // speichernToolStripMenuItem
@@ -200,7 +201,7 @@ namespace TestfallDB
             this.testfälleToolStripMenuItem,
             this.bauteileToolStripMenuItem});
             this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
-            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ladenToolStripMenuItem.Text = "Laden";
             // 
             // testfälleToolStripMenuItem
@@ -431,7 +432,7 @@ namespace TestfallDB
             this.checkBox_30.AutoSize = true;
             this.checkBox_30.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_30.ForeColor = System.Drawing.Color.White;
-            this.checkBox_30.Location = new System.Drawing.Point(33, 191);
+            this.checkBox_30.Location = new System.Drawing.Point(33, 217);
             this.checkBox_30.Name = "checkBox_30";
             this.checkBox_30.Size = new System.Drawing.Size(82, 22);
             this.checkBox_30.TabIndex = 7;
@@ -444,7 +445,7 @@ namespace TestfallDB
             this.checkBox_50.AutoSize = true;
             this.checkBox_50.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_50.ForeColor = System.Drawing.Color.White;
-            this.checkBox_50.Location = new System.Drawing.Point(33, 218);
+            this.checkBox_50.Location = new System.Drawing.Point(33, 244);
             this.checkBox_50.Name = "checkBox_50";
             this.checkBox_50.Size = new System.Drawing.Size(82, 22);
             this.checkBox_50.TabIndex = 8;
@@ -457,7 +458,7 @@ namespace TestfallDB
             this.checkBox_100.AutoSize = true;
             this.checkBox_100.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_100.ForeColor = System.Drawing.Color.White;
-            this.checkBox_100.Location = new System.Drawing.Point(33, 245);
+            this.checkBox_100.Location = new System.Drawing.Point(33, 271);
             this.checkBox_100.Name = "checkBox_100";
             this.checkBox_100.Size = new System.Drawing.Size(91, 22);
             this.checkBox_100.TabIndex = 9;
@@ -470,7 +471,7 @@ namespace TestfallDB
             this.checkBox_130.AutoSize = true;
             this.checkBox_130.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_130.ForeColor = System.Drawing.Color.White;
-            this.checkBox_130.Location = new System.Drawing.Point(33, 272);
+            this.checkBox_130.Location = new System.Drawing.Point(33, 298);
             this.checkBox_130.Name = "checkBox_130";
             this.checkBox_130.Size = new System.Drawing.Size(91, 22);
             this.checkBox_130.TabIndex = 10;
@@ -481,7 +482,7 @@ namespace TestfallDB
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(3, 313);
+            this.panel4.Location = new System.Drawing.Point(3, 344);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(188, 1);
             this.panel4.TabIndex = 11;
@@ -497,7 +498,7 @@ namespace TestfallDB
             "Polo",
             "Golf",
             "Touareg"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 371);
+            this.comboBox1.Location = new System.Drawing.Point(12, 402);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(170, 26);
             this.comboBox1.TabIndex = 3;
@@ -508,7 +509,7 @@ namespace TestfallDB
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 334);
+            this.label2.Location = new System.Drawing.Point(10, 365);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 19);
             this.label2.TabIndex = 6;
@@ -518,7 +519,7 @@ namespace TestfallDB
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.checkBox7);
-            this.panel5.Location = new System.Drawing.Point(26, 354);
+            this.panel5.Location = new System.Drawing.Point(26, 385);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(73, 1);
             this.panel5.TabIndex = 7;
@@ -536,6 +537,7 @@ namespace TestfallDB
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.panel1.Controls.Add(this.checkBox_7);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.comboBox1);
@@ -577,6 +579,19 @@ namespace TestfallDB
             // dataTable1BindingSource3
             // 
             this.dataTable1BindingSource3.DataSource = this.dataSet1BindingSource;
+            // 
+            // checkBox_7
+            // 
+            this.checkBox_7.AutoSize = true;
+            this.checkBox_7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_7.ForeColor = System.Drawing.Color.White;
+            this.checkBox_7.Location = new System.Drawing.Point(33, 192);
+            this.checkBox_7.Name = "checkBox_7";
+            this.checkBox_7.Size = new System.Drawing.Size(73, 22);
+            this.checkBox_7.TabIndex = 12;
+            this.checkBox_7.Text = "7 km/h";
+            this.checkBox_7.UseVisualStyleBackColor = true;
+            this.checkBox_7.CheckedChanged += new System.EventHandler(this.checkBox_7_CheckedChanged);
             // 
             // Form1
             // 
@@ -670,6 +685,7 @@ namespace TestfallDB
         private System.Windows.Forms.Button button_NIO;
         private System.Windows.Forms.Button button_NR;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.CheckBox checkBox_7;
     }
 }
 

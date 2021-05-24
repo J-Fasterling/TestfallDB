@@ -67,6 +67,7 @@ namespace TestfallDB
         #endregion
 
         public bool is0Included = false;
+        public bool is7Included = false;
         public bool is30Included = false;
         public bool is50Included = false;
         public bool is100Included = false;
