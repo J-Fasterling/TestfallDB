@@ -332,30 +332,6 @@ namespace TestfallDB
 
         {
             checkCarConfiguration();
-            /*gGlobal.listToTest.Clear();
-
-            switch (comboBox1.SelectedItem.ToString())
-            {
-                case "Up":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.up, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
-                    break;
-
-                case "Polo":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Polo, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
-                    break;
-
-                case "Golf":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Golf, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
-                    break;
-
-                case "Touareg":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Touareg, gGlobal.velocityList);
-                    gGlobal.ShowDataToListView(listView2);
-                    break;
-            }*/
         }
 
         private void checkCarConfiguration()
