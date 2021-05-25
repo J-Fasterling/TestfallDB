@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarConfiguration.cs" />
     <Compile Include="Components.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

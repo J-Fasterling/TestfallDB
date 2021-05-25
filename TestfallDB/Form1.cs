@@ -43,11 +43,11 @@ namespace TestfallDB
                     MessageBox.Show("Fehler beim herstellen der Datenbankverbindung", "Verbindungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            gGlobal.Up.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Up);
+            gGlobal.Polo.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Polo);
+            gGlobal.Golf.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Golf);
+            gGlobal.Touareg.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Touareg);
         }
 
         private void connectToData()
@@ -56,8 +56,6 @@ namespace TestfallDB
             {
                 sqlServer.SqlToComponent("Bauteile", gGlobal);
                 sqlServer.SqlToTestcase("Testfaelle", gGlobal);
-
-                gGlobal.ShowDataToListView(listView2);
             }
             catch (Exception ex)
             {
@@ -72,7 +70,7 @@ namespace TestfallDB
             Application.Exit();
         }
 
-
+        #region Laden/Speichern der Datenbank
         /// <summary>
         /// 
         /// </summary>
@@ -172,7 +170,7 @@ namespace TestfallDB
                             sqlServer.AddTest(test.Testname, test.Precondition, test.Velocity, test.ExpectedResult);
                         }
                         //connectToData();
-                        gGlobal.ShowDataToListView(listView2);
+                        //gGlobal.ShowDataToListView(listView2);
                     }
                 }
                 catch (Exception ex)
@@ -230,6 +228,7 @@ namespace TestfallDB
                 }
             }
         }
+        #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -251,11 +250,82 @@ namespace TestfallDB
             }
         }
 
+
+        private void setStatus(Testcase.TestStatus status)
+        {
+            switch (comboBox1.SelectedItem.ToString())
+            {
+                case "Up":
+                    gGlobal.Up.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
+                    compareStatus(gGlobal.Up, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
+
+                    if(gGlobal.Up.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
+                    {
+                        gGlobal.Up.testCnt++;
+                        gGlobal.Up.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested = true;
+                        toolStripProgressBar1.Value = gGlobal.Up.testCnt;
+                    }
+                    break;
+
+                case "Polo":
+                    gGlobal.Polo.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
+                    compareStatus(gGlobal.Polo, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
+
+                    if (gGlobal.Polo.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
+                    {
+                        gGlobal.Polo.testCnt++;
+                        gGlobal.Polo.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested = true;
+                        toolStripProgressBar1.Value = gGlobal.Polo.testCnt;
+                    }
+                    break;
+
+                case "Golf":
+                    gGlobal.Golf.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
+                    compareStatus(gGlobal.Golf, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
+
+                    if (gGlobal.Golf.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
+                    {
+                        gGlobal.Golf.testCnt++;
+                        gGlobal.Golf.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested = true;
+                        toolStripProgressBar1.Value = gGlobal.Golf.testCnt;
+                    }
+                    break;
+
+                case "Touareg":
+                    gGlobal.Touareg.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
+                    compareStatus(gGlobal.Touareg, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
+
+                    if (gGlobal.Touareg.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
+                    {
+                        gGlobal.Touareg.testCnt++;
+                        gGlobal.Touareg.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested = true;
+                        toolStripProgressBar1.Value = gGlobal.Touareg.testCnt;
+                    }
+                    break;
+            }
+        }
+
+
+        private void compareStatus(CarConfiguration car, int index)
+        {
+            foreach(Testcase test in car.CarspecificTests)
+            {
+                if(test.ExpectedResult == car.testcasesToShow[index].ExpectedResult)
+                {
+                    test.Status = car.testcasesToShow[index].Status;
+                }
+            }
+        }
+
+        #region Testfall validieren
         private void button_NIO_Click(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
             {
                 listView2.FocusedItem.BackColor = Color.Red;
+
+                setStatus(Testcase.TestStatus.n_i_O);
+
             }
         }
 
@@ -264,6 +334,9 @@ namespace TestfallDB
             if (listView2.SelectedItems.Count > 0)
             {
                 listView2.FocusedItem.BackColor = Color.Gray;
+
+                setStatus(Testcase.TestStatus.n_D);
+
             }
         }
 
@@ -272,9 +345,14 @@ namespace TestfallDB
             if (listView2.SelectedItems.Count > 0)
             {
                 listView2.FocusedItem.BackColor = Color.Green;
+
+                setStatus(Testcase.TestStatus.i_O);
+
             }
         }
+        #endregion
 
+        #region checkBoxen
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             checkAllCheckboxes();
@@ -302,6 +380,28 @@ namespace TestfallDB
         {
             checkAllCheckboxes();
         }
+
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
+        {
+            checkBox_0.Checked = checkBox2.Checked;
+            checkBox_0.Enabled = !checkBox2.Checked;
+
+            checkBox_7.Checked = checkBox2.Checked;
+            checkBox_7.Enabled = !checkBox2.Checked;
+
+            checkBox_30.Checked = checkBox2.Checked;
+            checkBox_30.Enabled = !checkBox2.Checked;
+
+            checkBox_50.Checked = checkBox2.Checked;
+            checkBox_50.Enabled = !checkBox2.Checked;
+
+            checkBox_100.Checked = checkBox2.Checked;
+            checkBox_100.Enabled = !checkBox2.Checked;
+
+            checkBox_130.Checked = checkBox2.Checked;
+            checkBox_130.Enabled = !checkBox2.Checked;
+        }
+        #endregion
 
         private void fillTestOverview(bool isIncluded, int velocity, CheckBox check)
         {
@@ -344,31 +444,56 @@ namespace TestfallDB
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "Up":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.up, gGlobal.velocityList);
+                    fillCarspecificList(gGlobal.Up);
+                    toolStripProgressBar1.Maximum = gGlobal.Up.toTest;
+                    toolStripProgressBar1.Value = gGlobal.Up.testCnt;
                     break;
 
                 case "Polo":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Polo, gGlobal.velocityList);
+                    fillCarspecificList(gGlobal.Polo);
+                    toolStripProgressBar1.Maximum = gGlobal.Polo.toTest;
+                    toolStripProgressBar1.Value = gGlobal.Polo.testCnt;
                     break;
 
                 case "Golf":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Golf, gGlobal.velocityList);
+                    fillCarspecificList(gGlobal.Golf);
+                    toolStripProgressBar1.Maximum = gGlobal.Golf.toTest;
+                    toolStripProgressBar1.Value = gGlobal.Golf.testCnt;
                     break;
 
                 case "Touareg":
-                    gGlobal.listToTest = sqlServer.sortByComponentsAndVelocity(gGlobal.Touareg, gGlobal.velocityList);
+                    fillCarspecificList(gGlobal.Touareg);
+                    toolStripProgressBar1.Maximum = gGlobal.Touareg.toTest;
+                    toolStripProgressBar1.Value = gGlobal.Touareg.testCnt;
                     break;
             }
+        }
+
+        private void fillCarspecificList(CarConfiguration car)
+        {
+            car.testcasesToShow = sqlServer.sortByComponentsAndVelocity(car.ConfigurationList, gGlobal.velocityList);
 
             int cnt = 1;
-            foreach(Testcase test in gGlobal.listToTest)
+            foreach (Testcase test in car.testcasesToShow)
             {
+                compareStatusBack(car, test);
                 test.Nr = cnt;
                 cnt++;
             }
 
-            gGlobal.ShowDataToListView(listView2);
+            gGlobal.ShowDataToListView(listView2, car);
+        }
 
+
+        private void compareStatusBack(CarConfiguration car, Testcase testcase)
+        {
+            foreach(Testcase test in car.CarspecificTests)
+            {
+                if(test.ExpectedResult == testcase.ExpectedResult)
+                {
+                    testcase.Status = test.Status;
+                }
+            }
         }
     }
 }

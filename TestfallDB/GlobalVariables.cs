@@ -19,25 +19,43 @@ namespace TestfallDB
         public List<Components> allComponents = new List<Components>();
 
         #region erstellen der Fahrzeugkonfigurationen
-        public List<Components> up = new List<Components>
-        {
-            new Components("Kopfairbag"),
-            new Components("ABS"),
-            new Components("ESC")
-        };
+        public CarConfiguration Up = new CarConfiguration();
+        public CarConfiguration Polo = new CarConfiguration();
+        public CarConfiguration Golf = new CarConfiguration();
+        public CarConfiguration Touareg = new CarConfiguration();
 
-        public List<Components> Polo = new List<Components>
+        #endregion
+
+        public bool is0Included = false;
+        public bool is7Included = false;
+        public bool is30Included = false;
+        public bool is50Included = false;
+        public bool is100Included = false;
+        public bool is130Included = false;
+
+
+        public GlobalVariables()
         {
-            new Components("Kopfairbag"),
+            Up.ConfigurationList = new List<Components>
+            {
+                new Components("Kopfairbag"),
+                new Components("ABS"),
+                new Components("ESC")
+            };
+
+
+            Polo.ConfigurationList = new List<Components>
+            {
+                new Components("Kopfairbag"),
             new Components("ABS"),
             new Components("ESC"),
             new Components("Fernlichtassistent"),
             new Components("Parksensoren")
-        };
+            };
 
-        public List<Components> Golf = new List<Components>
-        {
-            new Components("Kopfairbag"),
+            Golf.ConfigurationList = new List<Components>
+            {
+                new Components("Kopfairbag"),
             new Components("ABS"),
             new Components("ESC"),
             new Components("Fernlichtassistent"),
@@ -46,12 +64,12 @@ namespace TestfallDB
             new Components("GRA"),
             new Components("ACC"),
             new Components("Notbremsfunktion")
-        };
+            };
 
-
-        public List<Components> Touareg = new List<Components>
-        {
-            new Components("Kopfairbag"),
+            CarConfiguration touareg = new CarConfiguration();
+            Touareg.ConfigurationList = new List<Components>
+            {
+                new Components("Kopfairbag"),
             new Components("ABS"),
             new Components("ESC"),
             new Components("Fernlichtassistent"),
@@ -63,17 +81,9 @@ namespace TestfallDB
             new Components("Spurhalteassistent"),
             new Components("Totwinkelassistent"),
             new Components("Rueckfahrkamera")
-        };
-        #endregion
+            };
 
-        public bool is0Included = false;
-        public bool is7Included = false;
-        public bool is30Included = false;
-        public bool is50Included = false;
-        public bool is100Included = false;
-        public bool is130Included = false;
-
-
+        }
 
         #region fill ListView
         private void fillDataTable(List<Testcase> lTestcases, DataTable dt)
@@ -85,16 +95,41 @@ namespace TestfallDB
         }
 
 
-        private void fillListView(DataView dv, ListView list)
+        private void fillListView(DataView dv, ListView list, List<Testcase> lTestcases)
         {
             list.Items.Clear();
+            int cnt = 0;
             foreach (DataRow row in dv.ToTable().Rows)
             {
-                list.Items.Add(new ListViewItem(new String[] { row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString() }));
+                var item = new ListViewItem(new String[] { row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString() });
+                
+                switch (lTestcases[cnt].Status)
+                {
+                    case Testcase.TestStatus.i_O:
+                        item.SubItems[0].BackColor = System.Drawing.Color.Green;
+                        break;
+
+                    case Testcase.TestStatus.n_i_O:
+                        item.SubItems[0].BackColor = System.Drawing.Color.Red;
+                        break;
+
+                    case Testcase.TestStatus.n_D:
+                        item.SubItems[0].BackColor = System.Drawing.Color.Gray;
+                        break;
+
+                    case Testcase.TestStatus.notTested:
+                        item.SubItems[0].BackColor = System.Drawing.Color.White;
+                        break;
+                }
+                cnt++;
+                //item.UseItemStyleForSubItems = false;
+
+                list.Items.Add(item);
+
             }
         }
 
-        public void ShowDataToListView(ListView list)
+        public void ShowDataToListView(ListView list, CarConfiguration car)
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("Nr.");
@@ -103,9 +138,9 @@ namespace TestfallDB
             dt.Columns.Add("Geschwindigkeit");
             dt.Columns.Add("Erwartetes Resultat");
 
-            fillDataTable(this.listToTest, dt);
+            fillDataTable(car.testcasesToShow, dt);
             DataView dv = new DataView(dt);
-            fillListView(dv, list);
+            fillListView(dv, list, car.testcasesToShow);
         }
         #endregion
     }
