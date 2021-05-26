@@ -39,8 +39,8 @@ namespace TestfallDB
                 case "MGrubel":
                     sqlServer = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
                     connectToData();
-                    SaveToolStripMenuItem.Enabled = false;
-                    testfallHinzufügenToolStripMenuItem.Enabled = false;
+                    SaveToolStripMenuItem.Enabled = true;
+                    testfallHinzufügenToolStripMenuItem.Enabled = true;
                     break;
 
                 default:
