@@ -63,6 +63,16 @@ namespace TestfallDB.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arsch {
+            get {
+                object obj = ResourceManager.GetObject("arsch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel_cross_icon_icons_com_71726 {
             get {
                 object obj = ResourceManager.GetObject("cancel-cross_icon-icons.com_71726", resourceCulture);
@@ -156,6 +166,26 @@ namespace TestfallDB.Properties {
         internal static System.Drawing.Bitmap images__1_ {
             get {
                 object obj = ResourceManager.GetObject("images (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_0004 {
+            get {
+                object obj = ResourceManager.GetObject("IMG_0004", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_0006 {
+            get {
+                object obj = ResourceManager.GetObject("IMG_0006", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

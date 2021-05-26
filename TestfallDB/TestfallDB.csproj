@@ -72,6 +72,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Information.Designer.cs">
+      <DependentUpon>Information.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Testcase.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Information.resx">
+      <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
@@ -170,6 +179,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dash_106469 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_0004.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_0006.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arsch.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,11 +32,13 @@ namespace TestfallDB
                 case "JDiekamp":
                     sqlServer = new SQL_Edit("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True; MultipleActiveResultSets=True");
                     connectToData();
+                    SaveToolStripMenuItem.Enabled = false;
                     break;
 
                 case "MGrubel":
                     sqlServer = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
                     connectToData();
+                    SaveToolStripMenuItem.Enabled = false;
                     break;
 
                 default:
@@ -494,6 +496,12 @@ namespace TestfallDB
                     testcase.Status = test.Status;
                 }
             }
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Information info = new Information();
+            info.Show();
         }
     }
 }
