@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestfallDB
 {
-    class CarConfiguration
+    public class CarConfiguration
     {
         public List<Components> ConfigurationList = new List<Components>();
 

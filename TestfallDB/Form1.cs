@@ -33,12 +33,14 @@ namespace TestfallDB
                     sqlServer = new SQL_Edit("Data Source=JEREMIAS\\SET_SERVER;Initial Catalog=TestfallDB;Integrated Security=True; MultipleActiveResultSets=True");
                     connectToData();
                     SaveToolStripMenuItem.Enabled = false;
+                    testfallHinzufügenToolStripMenuItem.Enabled = false;
                     break;
 
                 case "MGrubel":
                     sqlServer = new SQL_Edit("Data Source=DESKTOP-DN676JK\\TESTFALLDATEN;Initial Catalog=TestfallDB;Integrated Security=True;MultipleActiveResultSets=True");
                     connectToData();
                     SaveToolStripMenuItem.Enabled = false;
+                    testfallHinzufügenToolStripMenuItem.Enabled = false;
                     break;
 
                 default:
@@ -50,6 +52,11 @@ namespace TestfallDB
             gGlobal.Polo.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Polo);
             gGlobal.Golf.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Golf);
             gGlobal.Touareg.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Touareg);
+        }
+
+        public Form1()
+        {
+
         }
 
         private void connectToData()
@@ -439,36 +446,37 @@ namespace TestfallDB
             checkCarConfiguration();
         }
 
-        private void checkCarConfiguration()
+        protected void checkCarConfiguration()
         {
             gGlobal.listToTest.Clear();
 
-            switch (comboBox1.SelectedItem.ToString())
-            {
-                case "Up":
-                    fillCarspecificList(gGlobal.Up);
-                    toolStripProgressBar1.Maximum = gGlobal.Up.toTest;
-                    toolStripProgressBar1.Value = gGlobal.Up.testCnt;
-                    break;
+            
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "Up":
+                        fillCarspecificList(gGlobal.Up);
+                        toolStripProgressBar1.Maximum = gGlobal.Up.toTest;
+                        toolStripProgressBar1.Value = gGlobal.Up.testCnt;
+                        break;
 
-                case "Polo":
-                    fillCarspecificList(gGlobal.Polo);
-                    toolStripProgressBar1.Maximum = gGlobal.Polo.toTest;
-                    toolStripProgressBar1.Value = gGlobal.Polo.testCnt;
-                    break;
+                    case "Polo":
+                        fillCarspecificList(gGlobal.Polo);
+                        toolStripProgressBar1.Maximum = gGlobal.Polo.toTest;
+                        toolStripProgressBar1.Value = gGlobal.Polo.testCnt;
+                        break;
 
-                case "Golf":
-                    fillCarspecificList(gGlobal.Golf);
-                    toolStripProgressBar1.Maximum = gGlobal.Golf.toTest;
-                    toolStripProgressBar1.Value = gGlobal.Golf.testCnt;
-                    break;
+                    case "Golf":
+                        fillCarspecificList(gGlobal.Golf);
+                        toolStripProgressBar1.Maximum = gGlobal.Golf.toTest;
+                        toolStripProgressBar1.Value = gGlobal.Golf.testCnt;
+                        break;
 
-                case "Touareg":
-                    fillCarspecificList(gGlobal.Touareg);
-                    toolStripProgressBar1.Maximum = gGlobal.Touareg.toTest;
-                    toolStripProgressBar1.Value = gGlobal.Touareg.testCnt;
-                    break;
-            }
+                    case "Touareg":
+                        fillCarspecificList(gGlobal.Touareg);
+                        toolStripProgressBar1.Maximum = gGlobal.Touareg.toTest;
+                        toolStripProgressBar1.Value = gGlobal.Touareg.testCnt;
+                        break;
+                }
         }
 
         private void fillCarspecificList(CarConfiguration car)
@@ -502,6 +510,12 @@ namespace TestfallDB
         {
             Information info = new Information();
             info.Show();
+        }
+
+        private void testfallHinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            neuerTestfall newTest = new neuerTestfall(sqlServer, gGlobal);
+            newTest.Show();
         }
     }
 }

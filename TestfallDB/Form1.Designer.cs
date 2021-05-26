@@ -37,17 +37,8 @@ namespace TestfallDB
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.DatenbankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testfälleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bauteileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button_NR = new System.Windows.Forms.Button();
-            this.button_NIO = new System.Windows.Forms.Button();
-            this.button_IO = new System.Windows.Forms.Button();
             this.label_Result = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label_Precondition = new System.Windows.Forms.Label();
@@ -72,6 +63,17 @@ namespace TestfallDB
             this.panel6 = new System.Windows.Forms.Panel();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox_7 = new System.Windows.Forms.CheckBox();
+            this.button_NR = new System.Windows.Forms.Button();
+            this.button_NIO = new System.Windows.Forms.Button();
+            this.button_IO = new System.Windows.Forms.Button();
+            this.DatenbankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.testfallHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testfälleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bauteileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -81,7 +83,6 @@ namespace TestfallDB
             this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -128,7 +129,7 @@ namespace TestfallDB
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Testname";
+            this.columnHeader4.Text = "Bauteil";
             this.columnHeader4.Width = 180;
             // 
             // columnHeader5
@@ -160,63 +161,13 @@ namespace TestfallDB
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // DatenbankToolStripMenuItem
+            // infoToolStripMenuItem
             // 
-            this.DatenbankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveToolStripMenuItem,
-            this.ladenToolStripMenuItem});
-            this.DatenbankToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.DatenbankToolStripMenuItem.Image = global::TestfallDB.Properties.Resources.database_icon_icons_com_70204;
-            this.DatenbankToolStripMenuItem.Name = "DatenbankToolStripMenuItem";
-            this.DatenbankToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.DatenbankToolStripMenuItem.Text = "Datenbank";
-            this.DatenbankToolStripMenuItem.Click += new System.EventHandler(this.benutzerToolStripMenuItem_Click);
-            // 
-            // SaveToolStripMenuItem
-            // 
-            this.SaveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.speichernToolStripMenuItem,
-            this.ladenToolStripMenuItem1});
-            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.SaveToolStripMenuItem.Text = "Speichern";
-            // 
-            // speichernToolStripMenuItem
-            // 
-            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.speichernToolStripMenuItem.Text = "Testfälle";
-            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
-            // 
-            // ladenToolStripMenuItem1
-            // 
-            this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
-            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
-            this.ladenToolStripMenuItem1.Text = "Bauteile";
-            this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
-            // 
-            // ladenToolStripMenuItem
-            // 
-            this.ladenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testfälleToolStripMenuItem,
-            this.bauteileToolStripMenuItem});
-            this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
-            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.ladenToolStripMenuItem.Text = "Laden";
-            // 
-            // testfälleToolStripMenuItem
-            // 
-            this.testfälleToolStripMenuItem.Name = "testfälleToolStripMenuItem";
-            this.testfälleToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.testfälleToolStripMenuItem.Text = "Testfälle";
-            this.testfälleToolStripMenuItem.Click += new System.EventHandler(this.testfälleToolStripMenuItem_Click);
-            // 
-            // bauteileToolStripMenuItem
-            // 
-            this.bauteileToolStripMenuItem.Name = "bauteileToolStripMenuItem";
-            this.bauteileToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.bauteileToolStripMenuItem.Text = "Bauteile";
-            this.bauteileToolStripMenuItem.Click += new System.EventHandler(this.bauteileToolStripMenuItem_Click);
+            this.infoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 24);
+            this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -238,42 +189,6 @@ namespace TestfallDB
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1094, 685);
             this.panel2.TabIndex = 4;
-            // 
-            // button_NR
-            // 
-            this.button_NR.BackColor = System.Drawing.Color.Gray;
-            this.button_NR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_NR.Image = global::TestfallDB.Properties.Resources.dash_106469__1_;
-            this.button_NR.Location = new System.Drawing.Point(736, 538);
-            this.button_NR.Name = "button_NR";
-            this.button_NR.Size = new System.Drawing.Size(75, 52);
-            this.button_NR.TabIndex = 14;
-            this.button_NR.UseVisualStyleBackColor = false;
-            this.button_NR.Click += new System.EventHandler(this.button_NR_Click);
-            // 
-            // button_NIO
-            // 
-            this.button_NIO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button_NIO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_NIO.Image = global::TestfallDB.Properties.Resources.cancel_cross_icon_icons_com_71726;
-            this.button_NIO.Location = new System.Drawing.Point(736, 590);
-            this.button_NIO.Name = "button_NIO";
-            this.button_NIO.Size = new System.Drawing.Size(75, 52);
-            this.button_NIO.TabIndex = 13;
-            this.button_NIO.UseVisualStyleBackColor = false;
-            this.button_NIO.Click += new System.EventHandler(this.button_NIO_Click);
-            // 
-            // button_IO
-            // 
-            this.button_IO.BackColor = System.Drawing.Color.Green;
-            this.button_IO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_IO.Image = global::TestfallDB.Properties.Resources.ontask4x_86986__1_;
-            this.button_IO.Location = new System.Drawing.Point(736, 486);
-            this.button_IO.Name = "button_IO";
-            this.button_IO.Size = new System.Drawing.Size(75, 52);
-            this.button_IO.TabIndex = 12;
-            this.button_IO.UseVisualStyleBackColor = false;
-            this.button_IO.Click += new System.EventHandler(this.button_IO_Click);
             // 
             // label_Result
             // 
@@ -478,9 +393,11 @@ namespace TestfallDB
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Up",
@@ -571,6 +488,108 @@ namespace TestfallDB
             this.checkBox_7.UseVisualStyleBackColor = true;
             this.checkBox_7.CheckedChanged += new System.EventHandler(this.checkBox_7_CheckedChanged);
             // 
+            // button_NR
+            // 
+            this.button_NR.BackColor = System.Drawing.Color.Gray;
+            this.button_NR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_NR.Image = global::TestfallDB.Properties.Resources.dash_106469__1_;
+            this.button_NR.Location = new System.Drawing.Point(736, 538);
+            this.button_NR.Name = "button_NR";
+            this.button_NR.Size = new System.Drawing.Size(75, 52);
+            this.button_NR.TabIndex = 14;
+            this.button_NR.UseVisualStyleBackColor = false;
+            this.button_NR.Click += new System.EventHandler(this.button_NR_Click);
+            // 
+            // button_NIO
+            // 
+            this.button_NIO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button_NIO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_NIO.Image = global::TestfallDB.Properties.Resources.cancel_cross_icon_icons_com_71726;
+            this.button_NIO.Location = new System.Drawing.Point(736, 590);
+            this.button_NIO.Name = "button_NIO";
+            this.button_NIO.Size = new System.Drawing.Size(75, 52);
+            this.button_NIO.TabIndex = 13;
+            this.button_NIO.UseVisualStyleBackColor = false;
+            this.button_NIO.Click += new System.EventHandler(this.button_NIO_Click);
+            // 
+            // button_IO
+            // 
+            this.button_IO.BackColor = System.Drawing.Color.Green;
+            this.button_IO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_IO.Image = global::TestfallDB.Properties.Resources.ontask4x_86986__1_;
+            this.button_IO.Location = new System.Drawing.Point(736, 486);
+            this.button_IO.Name = "button_IO";
+            this.button_IO.Size = new System.Drawing.Size(75, 52);
+            this.button_IO.TabIndex = 12;
+            this.button_IO.UseVisualStyleBackColor = false;
+            this.button_IO.Click += new System.EventHandler(this.button_IO_Click);
+            // 
+            // DatenbankToolStripMenuItem
+            // 
+            this.DatenbankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveToolStripMenuItem,
+            this.testfallHinzufügenToolStripMenuItem,
+            this.ladenToolStripMenuItem});
+            this.DatenbankToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.DatenbankToolStripMenuItem.Image = global::TestfallDB.Properties.Resources.database_icon_icons_com_70204;
+            this.DatenbankToolStripMenuItem.Name = "DatenbankToolStripMenuItem";
+            this.DatenbankToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.DatenbankToolStripMenuItem.Text = "Datenbank";
+            this.DatenbankToolStripMenuItem.Click += new System.EventHandler(this.benutzerToolStripMenuItem_Click);
+            // 
+            // SaveToolStripMenuItem
+            // 
+            this.SaveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.speichernToolStripMenuItem,
+            this.ladenToolStripMenuItem1});
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.SaveToolStripMenuItem.Text = "Speichern";
+            // 
+            // speichernToolStripMenuItem
+            // 
+            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.speichernToolStripMenuItem.Text = "Testfälle";
+            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            // 
+            // ladenToolStripMenuItem1
+            // 
+            this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
+            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.ladenToolStripMenuItem1.Text = "Bauteile";
+            this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
+            // 
+            // testfallHinzufügenToolStripMenuItem
+            // 
+            this.testfallHinzufügenToolStripMenuItem.Name = "testfallHinzufügenToolStripMenuItem";
+            this.testfallHinzufügenToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.testfallHinzufügenToolStripMenuItem.Text = "Testfall hinzufügen";
+            this.testfallHinzufügenToolStripMenuItem.Click += new System.EventHandler(this.testfallHinzufügenToolStripMenuItem_Click);
+            // 
+            // ladenToolStripMenuItem
+            // 
+            this.ladenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testfälleToolStripMenuItem,
+            this.bauteileToolStripMenuItem});
+            this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
+            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ladenToolStripMenuItem.Text = "Laden";
+            // 
+            // testfälleToolStripMenuItem
+            // 
+            this.testfälleToolStripMenuItem.Name = "testfälleToolStripMenuItem";
+            this.testfälleToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.testfälleToolStripMenuItem.Text = "Testfälle";
+            this.testfälleToolStripMenuItem.Click += new System.EventHandler(this.testfälleToolStripMenuItem_Click);
+            // 
+            // bauteileToolStripMenuItem
+            // 
+            this.bauteileToolStripMenuItem.Name = "bauteileToolStripMenuItem";
+            this.bauteileToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.bauteileToolStripMenuItem.Text = "Bauteile";
+            this.bauteileToolStripMenuItem.Click += new System.EventHandler(this.bauteileToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -593,14 +612,6 @@ namespace TestfallDB
             // dataTable1BindingSource3
             // 
             this.dataTable1BindingSource3.DataSource = this.dataSet1BindingSource;
-            // 
-            // infoToolStripMenuItem
-            // 
-            this.infoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 24);
-            this.infoToolStripMenuItem.Text = "Info";
-            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -691,6 +702,7 @@ namespace TestfallDB
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testfallHinzufügenToolStripMenuItem;
     }
 }
 

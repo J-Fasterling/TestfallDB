@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TestfallDB
 {
-    class GlobalVariables
+    public class GlobalVariables
     {
         public List<Testcase> listToTest = new List<Testcase>();
 

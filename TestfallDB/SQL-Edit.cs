@@ -9,7 +9,7 @@ using System.Data;
 
 namespace TestfallDB
 {
-    class SQL_Edit
+    public class SQL_Edit
     {
         public SqlConnection Connection { get; set; }
         public SqlCommand Command { get; set; }
