@@ -11,15 +11,23 @@ namespace TestfallDB
     [Serializable()]
     public class Testcase
     {
+        //Testfallnummer
         public int Nr { get; set; }
+        //Name des Testfalls
         public string Testname { get; set; }
+        //Vorbedingung
         public string Precondition { get; set; }
+        //Geschwindigkeit
         public int Velocity { get; set; }
+        //Erwartetets Ergebnis
         public string ExpectedResult { get; set; }
+        //Status des Testfalls
         public TestStatus Status { get; set; }
 
+        //bool ob Testfall schon getestet wurde
         public bool alreadyTested { get; set; }
 
+        //enum der Testzustände
         public enum TestStatus 
         { 
             notTested, 

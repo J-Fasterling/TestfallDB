@@ -21,7 +21,7 @@ namespace TestfallDB
         {
             InitializeComponent();
 
-            //Stellt Verbindung mit Datenbank des ausgewählten Users her
+            //Stellt Verbindung mit Datenbank des eingeloggten Users her
             switch (sUser)
             {
                 case "JFasterling":
@@ -48,17 +48,18 @@ namespace TestfallDB
                     break;
             }
 
+            //erzeugt die Fahrzeugspezifischen Testfälle
             gGlobal.Up.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Up);
             gGlobal.Polo.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Polo);
             gGlobal.Golf.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Golf);
             gGlobal.Touareg.CarspecificTests = sqlServer.createCarSpecificList(gGlobal.Touareg);
         }
 
-        public Form1()
-        {
+        public Form1() {}
 
-        }
-
+        /// <summary>
+        /// speichert die Daten der Datenbanken in Listen
+        /// </summary>
         private void connectToData()
         {
             try
@@ -81,7 +82,7 @@ namespace TestfallDB
 
         #region Laden/Speichern der Datenbank
         /// <summary>
-        /// 
+        /// Datenbankdatein werden per Xml serialisiert
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -92,6 +93,7 @@ namespace TestfallDB
                 XmlSerializer testSerializer = new XmlSerializer(typeof(List<Testcase>));
                 SaveFileDialog saveStream = new SaveFileDialog();
 
+                //SaveFileDialog bearbeiten
                 saveStream.Title = "Speichern der Datenbankdatein";
                 saveStream.FileName = "TestfallXmlData";
                 saveStream.DefaultExt = ".xml";
@@ -99,6 +101,7 @@ namespace TestfallDB
 
                 if (saveStream.FileName != "")
                 {
+                    //speichert die Daten an den gewünschten ort
                     FileStream fs = (FileStream)saveStream.OpenFile();
                     testSerializer.Serialize(fs, gGlobal.allTestcases);
                     fs.Close();
@@ -112,7 +115,7 @@ namespace TestfallDB
 
 
         /// <summary>
-        /// Speichert Bauteildaten der Datenbank in externer Xml-Datei
+        /// Datenbankdatein werden per Xml serialisiert
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -123,6 +126,7 @@ namespace TestfallDB
                 XmlSerializer testSerializer = new XmlSerializer(typeof(List<Components>));
                 SaveFileDialog saveStream = new SaveFileDialog();
 
+                //SaveFileDialog bearbeiten
                 saveStream.Title = "Speichern der Datenbankdatein";
                 saveStream.FileName = "BauteilXmlData";
                 saveStream.DefaultExt = ".xml";
@@ -130,6 +134,7 @@ namespace TestfallDB
 
                 if (saveStream.FileName != "")
                 {
+                    //speichert die Daten an den gewünschten ort
                     FileStream fs = (FileStream)saveStream.OpenFile();
                     testSerializer.Serialize(fs, gGlobal.allComponents);
                     fs.Close();
@@ -159,6 +164,7 @@ namespace TestfallDB
                     XmlSerializer testDeserializer = new XmlSerializer(typeof(List<Testcase>));
                     OpenFileDialog file = new OpenFileDialog();
 
+                    //FileDialog bearbeiten
                     file.InitialDirectory = "c:\\";
                     file.Filter = "xml files (*.xml)|*.xml";
                     file.FilterIndex = 2;
@@ -168,18 +174,19 @@ namespace TestfallDB
                     {
                         var fileStream = file.OpenFile();
 
+                        //Liest Daten aus Xml in Liste
                         StreamReader sReader = new StreamReader(fileStream);
                         gGlobal.allTestcases = (List<Testcase>)testDeserializer.Deserialize(sReader);
                         fileStream.Close();
 
+                        //löscht vorhandenen Datenbankinhalt
                         sqlServer.deleteAllData("Testfaelle");
 
+                        //speichert Daten in der Datenbank
                         foreach (Testcase test in gGlobal.allTestcases)
                         {
                             sqlServer.AddTest(test.Testname, test.Precondition, test.Velocity, test.ExpectedResult);
                         }
-                        //connectToData();
-                        //gGlobal.ShowDataToListView(listView2);
                     }
                 }
                 catch (Exception ex)
@@ -191,7 +198,7 @@ namespace TestfallDB
 
 
         /// <summary>
-        /// Laedt Bauteile in die Datenbank
+        /// Lädt Bauteile in die Datenbank
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -208,7 +215,7 @@ namespace TestfallDB
                     XmlSerializer compDeserializer = new XmlSerializer(typeof(List<Components>));
                     OpenFileDialog file = new OpenFileDialog();
 
-                    //FileDialog um Xml Datei zu suchen
+                    //FileDialog bearbeiten
                     file.InitialDirectory = "c:\\";
                     file.Filter = "xml files (*.xml)|*.xml";
                     file.FilterIndex = 2;
@@ -218,13 +225,16 @@ namespace TestfallDB
                     {
                         var fileStream = file.OpenFile();
 
+                        //Liest Daten aus Xml in Liste
                         StreamReader sReader = new StreamReader(fileStream);
                         gGlobal.allComponents.Clear();
                         gGlobal.allComponents = (List<Components>)compDeserializer.Deserialize(sReader);
                         fileStream.Close();
 
+                        //löscht vorhandenen Datenbankinhalt
                         sqlServer.deleteAllData("Bauteile");
 
+                        //speichert Daten in der Datenbank
                         foreach (Components comp in gGlobal.allComponents)
                         {
                             sqlServer.AddComp("Bauteil", comp.Component);
@@ -239,16 +249,21 @@ namespace TestfallDB
         }
         #endregion
 
+        /// <summary>
+        /// gesamte Anwenung schliessen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void benutzerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.menuStrip1.ForeColor = Color.Black;
-        }
-
+        /// <summary>
+        /// gibt ausgewählten Testfall in Labels aus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -260,14 +275,21 @@ namespace TestfallDB
         }
 
 
+        /// <summary>
+        /// setzt den Status des Testfalls beim erneuten Laden der Konfiguration
+        /// </summary>
+        /// <param name="status"></param>
         private void setStatus(Testcase.TestStatus status)
         {
+            //nach Konfiguration suchen
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "Up":
+                    //setzt den Status aus der Fahrzeugspezifischen Testfallliste
                     gGlobal.Up.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
                     compareStatus(gGlobal.Up, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
 
+                    //wird Testfall zum ersten mal getestet, wird die Statusleiste erhöht
                     if(gGlobal.Up.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
                     {
                         gGlobal.Up.testCnt++;
@@ -277,9 +299,11 @@ namespace TestfallDB
                     break;
 
                 case "Polo":
+                    //setzt den Status aus der Fahrzeugspezifischen Testfallliste
                     gGlobal.Polo.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
                     compareStatus(gGlobal.Polo, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
 
+                    //wird Testfall zum ersten mal getestet, wird die Statusleiste erhöht
                     if (gGlobal.Polo.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
                     {
                         gGlobal.Polo.testCnt++;
@@ -289,9 +313,11 @@ namespace TestfallDB
                     break;
 
                 case "Golf":
+                    //setzt den Status aus der Fahrzeugspezifischen Testfallliste
                     gGlobal.Golf.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
                     compareStatus(gGlobal.Golf, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
 
+                    //wird Testfall zum ersten mal getestet, wird die Statusleiste erhöht
                     if (gGlobal.Golf.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
                     {
                         gGlobal.Golf.testCnt++;
@@ -301,9 +327,11 @@ namespace TestfallDB
                     break;
 
                 case "Touareg":
+                    //setzt den Status aus der Fahrzeugspezifischen Testfallliste
                     gGlobal.Touareg.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].Status = status;
                     compareStatus(gGlobal.Touareg, (int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1));
 
+                    //wird Testfall zum ersten mal getestet, wird die Statusleiste erhöht
                     if (gGlobal.Touareg.testcasesToShow[int.Parse(listView2.FocusedItem.SubItems[0].Text) - 1].alreadyTested == false)
                     {
                         gGlobal.Touareg.testCnt++;
@@ -315,6 +343,11 @@ namespace TestfallDB
         }
 
 
+        /// <summary>
+        /// Setzt den Status der angezeigten Testfälle auf Fahrzeugspezifische Testfälle
+        /// </summary>
+        /// <param name="car"></param>
+        /// <param name="index"></param>
         private void compareStatus(CarConfiguration car, int index)
         {
             foreach(Testcase test in car.CarspecificTests)
@@ -327,6 +360,12 @@ namespace TestfallDB
         }
 
         #region Testfall validieren
+
+        /// <summary>
+        /// Testfall ist ungültig und wird rot angezeigt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_NIO_Click(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -334,10 +373,15 @@ namespace TestfallDB
                 listView2.FocusedItem.BackColor = Color.Red;
 
                 setStatus(Testcase.TestStatus.n_i_O);
-
             }
         }
 
+
+        /// <summary>
+        /// Testfall ist nicht durchführbar und wird auf Grau gesetzt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_NR_Click(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -345,10 +389,15 @@ namespace TestfallDB
                 listView2.FocusedItem.BackColor = Color.Gray;
 
                 setStatus(Testcase.TestStatus.n_D);
-
             }
         }
 
+
+        /// <summary>
+        /// Testfall ist bestanden und wird auf grün gesetzt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_IO_Click(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -356,12 +405,12 @@ namespace TestfallDB
                 listView2.FocusedItem.BackColor = Color.Green;
 
                 setStatus(Testcase.TestStatus.i_O);
-
             }
         }
         #endregion
 
         #region checkBoxen
+        //beim wählen einer neuen Geschwindigkeit wird eine neue testliste erzeugt
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             checkAllCheckboxes();
@@ -390,6 +439,7 @@ namespace TestfallDB
             checkAllCheckboxes();
         }
 
+        //beim Ausählen aller Geschwindigkeiten werden alle ausgewählt und ausgegraut
         private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
         {
             checkBox_0.Checked = checkBox2.Checked;
@@ -412,6 +462,12 @@ namespace TestfallDB
         }
         #endregion
 
+        /// <summary>
+        /// fügt Geschwindigkeit zur Geschwindigkeitsliste hinzu
+        /// </summary>
+        /// <param name="isIncluded"></param>
+        /// <param name="velocity"></param>
+        /// <param name="check"></param>
         private void fillTestOverview(bool isIncluded, int velocity, CheckBox check)
         {
             if (check.Checked && !isIncluded)
@@ -422,7 +478,9 @@ namespace TestfallDB
             }
         }
 
-
+        /// <summary>
+        /// überprüft jede Checkbox, ob sie ausgewählt ist und fügt deren Geschwindigkeit zur Geschwindigkeitslist hinzu
+        /// </summary>
         private void checkAllCheckboxes()
         {
             gGlobal.velocityList.Clear();
@@ -440,17 +498,23 @@ namespace TestfallDB
             }
         }
 
+        /// <summary>
+        /// neue Fahrzeugtestfälle anzeigen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
 
         {
             checkCarConfiguration();
         }
 
-        protected void checkCarConfiguration()
-        {
-            gGlobal.listToTest.Clear();
 
-            
+        /// <summary>
+        /// sucht nach ausgewählter Fahrzeugkonfiguration und zeigt diese an
+        /// </summary>
+        protected void checkCarConfiguration()
+        {    
                 switch (comboBox1.SelectedItem.ToString())
                 {
                     case "Up":
@@ -479,6 +543,11 @@ namespace TestfallDB
                 }
         }
 
+
+        /// <summary>
+        /// erzeugt die relevanten Testfälle für das Fahrzeug und zeigt diese an
+        /// </summary>
+        /// <param name="car"></param>
         private void fillCarspecificList(CarConfiguration car)
         {
             car.testcasesToShow = sqlServer.sortByComponentsAndVelocity(car.ConfigurationList, gGlobal.velocityList);
@@ -490,11 +559,15 @@ namespace TestfallDB
                 test.Nr = cnt;
                 cnt++;
             }
-
             gGlobal.ShowDataToListView(listView2, car);
         }
 
 
+        /// <summary>
+        /// der Status eines Testfalls wird auf seinen vorher gesetzten Status zurückgesetzt
+        /// </summary>
+        /// <param name="car"></param>
+        /// <param name="testcase"></param>
         private void compareStatusBack(CarConfiguration car, Testcase testcase)
         {
             foreach(Testcase test in car.CarspecificTests)
@@ -506,12 +579,23 @@ namespace TestfallDB
             }
         }
 
+
+        /// <summary>
+        /// zeigt das Fenster mit den Informationen über die Entwickler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Information info = new Information();
             info.Show();
         }
 
+        /// <summary>
+        /// zeigt das Fenster mit den hinzufügen eines neuen Testfalls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void testfallHinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             neuerTestfall newTest = new neuerTestfall(sqlServer, gGlobal);

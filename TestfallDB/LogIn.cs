@@ -14,7 +14,9 @@ namespace TestfallDB
     {
         internal class user
         {
+            //Name des Users
             public string name { get; set; }
+            //Passwort des Users
             public string password { get; set; }
 
             public user(string sName, string sPassword)
@@ -26,6 +28,7 @@ namespace TestfallDB
 
         Form1 startform;
 
+        //erstellen der Benutzerkonten
         user chef = new user("JFasterling", "JFasterling");
         user jerry = new user("JDiekamp", "Jonas=Chef");
         user grubelix = new user("MGrubel", "Jonas=Chef");
@@ -38,11 +41,13 @@ namespace TestfallDB
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //beendet die gesamte Anwendung
             Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //kontrolliert den Benutzernamen und das dazugehörige Passwort
             switch (textBox_User.Text)
             {
                 case "JFasterling":
@@ -92,6 +97,7 @@ namespace TestfallDB
 
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
+            //Eingabe mit der Enter-Taste bestätigen
             if (e.KeyCode == Keys.Enter)
             {
                 this.button1.PerformClick();
@@ -100,11 +106,13 @@ namespace TestfallDB
 
         private void textBox_User_Click(object sender, EventArgs e)
         {
+            //TextBox Text wird beim Draufklicken gelöscht
             textBox_User.Clear();
         }
 
         private void textBox_Pas_Click(object sender, EventArgs e)
         {
+            //TextBox Text wird beim Draufklicken gelöscht
             textBox_Pas.Clear();
         }
     }

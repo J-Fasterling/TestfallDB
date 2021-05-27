@@ -11,7 +11,9 @@ namespace TestfallDB
     [Serializable()]
     public class Components
     {
+        //Bauteilname
         public string Component { get; set; }
+        //Nummerierung des Bauteils
         public int Nr { get; set; }
 
 

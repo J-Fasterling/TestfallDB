@@ -19,6 +19,7 @@ namespace TestfallDB
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //schliesst dieses Fenster
             this.Hide();
         }
     }

@@ -535,7 +535,6 @@ namespace TestfallDB
             this.DatenbankToolStripMenuItem.Name = "DatenbankToolStripMenuItem";
             this.DatenbankToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.DatenbankToolStripMenuItem.Text = "Datenbank";
-            this.DatenbankToolStripMenuItem.Click += new System.EventHandler(this.benutzerToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
